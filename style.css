@@ -1,0 +1,33 @@
+/* Обнуляючі стмлі */
+*, *: before, *:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: white;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+h1 {
+  font-size: 40px;
+  margin: 0 0 30px 0;
+}
+
+/* підняти блок на інший, так щоб педнявся весь нижній контент*/
+.minusTop {
+  position: relative;
+  z-index: 2;
+  margin: -50px 0 0 0;
+}
+
+.boxBS {
+  width: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: linen;
+}
