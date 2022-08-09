@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+  </head>
+
+  <body>
+    <script>
+        // ОБ'ЄКТИ
+        // всі сущності в JS  - це об'єкти
+        // Об'єкт - набір властивостей "ім'я: значення"
+        // Це - тип значень, це тип змінних
+        // Це посилающийся тип
+
+        // Структура об'єкта, в прикладі нижче три властивосі
+        // порядок немає значення, але рекомендується сортувати по довжині
+        // Рекомендується використовувати тип const
+        // незважаючи на те, щоб тип константа, ми не змінюємо значення змінної, так вона має тільки посилання на обєкт, а сам обєкти ми зсінюємо.
+        const myCity = {
+            city: 'New York',
+            popular: true,
+            country: 'USA'
+        }
+        // доступ до властивостей через крапку, точковий запис, dot notation, напр.: myCity.city
+        console.log(myCity.city)
+
+        // ЗМІНИТИ данні, наприклад:
+        myCity.city = 'Las Vegas'
+        console.log(myCity.city)
+
+        // ДОДАТИ властивості
+        // незважаючи на тип данних const, можна змінювати об'єкт, сам тип змінної не змінюється, так як це посилення
+        myCity.language = 'en'
+        console.log(myCity.language)
+        // або додати через квадратні дужки, як в масивах, так само як і через крапковий метод
+        // дужковий запис
+        myCity['popular'] = false
+        // такий метод знадобиться також тоді, коли назви зміннох співпаждає з назвою властивості, наприклад:
+        const countryPropertyName = 'country'
+        myCity[countryPropertyName] = 'USA'
+        // так не вийде, як нижче, бо створиться властивість countryPropertyName, а нам потріна country
+        // це не підходить нам: myCity.countryPropertyName = 'USA'
+
+        // ВИДАЛИТИ властивості
+        delete myCity.language
+        console.log(myCity)
+
+
+        // ВКЛАДЕНІ об'єкти
+        const myCityNew.vObj = {
+          values1: true,
+          values2: false, 
+          info: { // вкладений об'єкт
+            isPopular: true,
+            country: 'USA'
+          }
+        }
+        // два варінати доступа
+        console.log(myCityNew.info.isPopular);
+        delete myCityNew.info['isPopular'];
+
+        // 4-15
+        // СКОРОЧЕНИЙ формат запису властивостей в об'єкті, формат створення об'єктів
+        const myName = 'Viktor'
+        const postiOty = 23
+
+        // Звичаний
+        const userProfile1 = {
+          myName: myName,
+          postiOty: postіOty,
+          myLang: false
+        }
+
+        // Скорочений
+        const userProfile2 = {
+          myName, // скорочений варіан записів
+          postiOty, // такі записи краще вказувати на початку об'єкта, також можна сортувати по довжині назви
+          myLang: false
+        }
+    </script>
+  </body>
+</html>

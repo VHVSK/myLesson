@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Області видимості</title>
+  </head>
+  <body>
+    <script>
+      // видимість
+      // Глобальні області видимісті
+      // Локальні області видимості
+
+      let a;
+      let b; // global
+
+      function myFn() {
+        let b;
+        a = true;
+        b = 10; // local
+        console.log(b);
+      }
+
+      myFn();
+
+      console.log(a);
+      console.log(b);
+
+      // Існує таке поняття як Цепочка областей видимості, це коли змінна шукається спочатку в функції, далі вище в батьківській функції, далі вище в глобальному рівні
+    </script>
+  </body>
+</html>

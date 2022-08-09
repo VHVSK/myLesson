@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ~~ 2.25
+      const a = 10; // не можеа змінювати
+      let b = a; // копіювання значення
+      b = 30; // ми змінили b, значення а - задишилося без змін.
+
+      // А якщо об'єкт, це значення посилаючого типу
+
+      const person = {
+        name: "Bob",
+        age: 21,
+      };
+
+      // можесо змінити значення і дрдати нові властивосі, і вони дійсно мутують, тобто зміняться
+
+      person.age = 22;
+      person.isAdult = true;
+
+      // МУТАЦІЯ КОПІЇ ОБ'ЄКТІВ
+      const person = {
+        name: "Bob",
+        age: 21,
+      };
+
+      const person2 = person;
+      person2.age = 26;
+      person2.isAdult = true;
+
+      // в результаті перший об'єкт також зміниться, так воно має посилання на данні
+      // person.age // 26
+      // person.isAdult // true
+
+      // це варто пам'ятати!!!! щоб не зміниться оригінал об'єкта
+
+      // 2.30
+      // Як запобігти мутації
+      // Варіант 1
+      const person = {
+        name: "Bob",
+        age: 21,
+      };
+
+      const person2 = Object.assign({}, person);
+      // !!! Але, змінуює тільки корневі властивосі, а якщо він має вкдадені обєкти, то вони не змінюються.
+
+      // assign - створює новий об'єкт
+
+      // Варіант 2
+
+      const person2 = { ...person }; // ... - три крапки, оператор розділення обєкта на властивості
+      // в такому випдку всі змінються
+
+      // Варіант 3
+      const person2 = JSON.parse(JSON.stringify(person));
+
+      // тобто подвійна конвертація
+      // ориганальний обєкт буде без змін
+    </script>
+  </body>
+</html>
