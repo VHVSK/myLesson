@@ -106,7 +106,7 @@
 
         // ДРУГИЙ ПРИКЛАД ВИКОРИСТОВУВАТИ ПАРАМЕТРИ ЗА УМОВЯЧАННЯМ
         // задача newPost - повернути об'єкт
-        // це варіанти з неявним поверненням результату функції (стрілочна функція), тому ми ще має обергути в круглі дужки
+        // це варіанти з НЕявним поверненням результату функції (стрілочна функція), тому ми ще має обергути в круглі дужки
         const newPost = (post, addedAt = Date()) => ({
             ...post,
             addedAt,
@@ -117,20 +117,23 @@
             author: "Bogdan",
         }
 
-        newPost(firstPost)
+        newPost(firstPost);
 
-        // // Завдання переписати функцію з явним поверненням результату функції
-        // const newPost2 = function(post, addedAt = Date()) {
-        //     
-        //     return result
-        // }
+        // Завдання переписати функцію з !явним поверненням результату функції
+        const newPost2 = function(post, addedAt = Date()) {
+            return {
+                ...post,
+                addedAt
+            }
+        }
 
-        // const firstPost2 = {
-        //     id: 2,
-        //     author: "Viktor",
-        // }
+        const firstPost2 = {
+            id: 2,
+            author: "Viktor",
+        }
 
-        // newPost2(firstPost2)
+        newPost2(firstPost2)
+        // {id: 2, author: 'Viktor', addedAt: 'Mon Aug 22 2022 10:35:25 GMT+0300 (за східноєвропейським літнім часом)'}
 
     </script>
 </body>
