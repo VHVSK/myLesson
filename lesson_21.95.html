@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Розширення інших класів
+        // NumbersArray розширює Array
+        class NumbersArray extends Array {
+            // батьківський контрукотор Array визветься автоматично
+            sum() {
+                return this.reduce((el, acc) => acc += el, 0)
+            }
+            // reduce - щось схоче на перебор масиву, буде визвана стільки разів, скільки значень
+        }
+
+        const myArray = new NumbersArray(2, 5, 7)
+
+        console.log(myArray) // вже доступний метод sum
+        myArray.sum() // 14
+
+        // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+        // Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.
+        // accumulator - Аккумулятор, аккумулирующий значение, которое возвращает функция callback
+
+        // В прикладі вище ми строили такий ланцюг дій, цепочка прототипів
+        // myArray -> NumbersArray -> Array -> Object
+
+        // ЩО ТАКЕ ПРОТОТИП?
+        
+
+
+    </script>
+</body>
+</html>
