@@ -31,7 +31,34 @@
         // myArray -> NumbersArray -> Array -> Object
 
         // ЩО ТАКЕ ПРОТОТИП?
-        
+        // Це прихована властивість, її бажано не змінювати вручну
+        // Comment.prototype === firstComment.__proto__
+        // Прототип це об'єкт
+        // В нього є методи і т.п.
+        // Це створено для того, щоб створити JS як ООП
+
+
+        // СТРОКИ ТА ЧИСЛА ВЕДУТЬ СЕБЕ ЯК ОБ'ЭКТИ
+        // const num = 10
+        // num.toString і т. п. - тобто, примытивны типи ведуть себе як обёкти, бо дать до доступ до методів
+
+        // Наприклад, створимо змінну та визавати в консолі браузера
+        const myName = 'Bogdan'
+        myName.toUpperCase() // 'BOGDAN'
+
+        // Але, якщо використовувати new
+        const mySecondName = new String('Stashchuk')
+        mySecondName // ми отримали об'єкт
+
+        /*
+        String {'Stashchuk'}0: "S"1: "t"2: "a"3: "s"4: "h"5: "c"6: "h"7: "u"8: "k"length: 9[[Prototype]]: String[[PrimitiveValue]]: "Stashchuk"
+
+        навіть length
+        а прототип String
+        І там, і там є методи
+        По суті, навіть якщо змінна тип строка, вона веде себе як об''єкт'
+        */
+
 
 
     </script>
