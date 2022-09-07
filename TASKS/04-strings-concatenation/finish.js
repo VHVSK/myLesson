@@ -10,3 +10,13 @@
  *
  * 3. Выведите значение последней переменной в консоль
  */
+
+const myName = 'Vikram'
+const myFname = 'Petrov'
+const myProf = 'developer'
+
+let descr = `My name ${myName} ${myFname} and I am ${myProf}`
+let descr2 = 'My name ' + myName + ' ' + myFname + ' and I am ' + myProf
+
+console.log(descr)
+console.log(descr2)

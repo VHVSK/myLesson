@@ -8,3 +8,9 @@
  *
  * 4. Вызовите функцию
  */
+
+function myFunc() {
+    console.log('Vikram')
+}
+
+myFunc() // return undefined

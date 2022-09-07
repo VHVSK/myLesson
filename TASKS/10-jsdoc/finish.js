@@ -12,3 +12,21 @@
  *
  * 4. Вызовите функцию
  */
+
+// js doc   
+
+
+/**
+ * Повертиає різницю двух чисел
+ * @param {number} number1 
+ * @param {number} number2 
+ * @returns {number} Різниця чисел
+ */
+function numbers (number1, number2) {
+    return number1 - number2
+}
+
+// наведіть на назву фнекцію і буде підказка по цій фінкції
+// також можна описувати об'єкти
+const test = numbers(10, 5)
+console.log(test)
