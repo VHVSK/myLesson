@@ -8,3 +8,16 @@
  *
  * 4. Выведите в консоль измененный массив
  */
+ const myArray = ['text', 10, true]
+
+ myArray.forEach(value => {
+    console.log(value)
+ })
+
+ myArray[1] = 20
+
+ myArray.forEach(value => {
+    console.log(value)
+ })
+
+ console.log(myArray) // [ 'text', 20, true ]
