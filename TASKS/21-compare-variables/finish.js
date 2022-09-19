@@ -10,8 +10,22 @@ let myVariable1 = 10
 let myVariable2 = '5'
 
 // Напишите код здесь
+if(Number(myVariable1) <= Number(myVariable2)) {
+    console.log(true)
+} else {
+    console.log(false)
+}
+
+// Варіант автора
+// console.log(parseInt(myVariable1) <= parseInt(myVariable2))
+
 
 myVariable1 = '20'
 myVariable2 = 100
 
 // Напишите код здесь
+if(Number(myVariable1) <= Number(myVariable2)) {
+    console.log(true)
+} else {
+    console.log(false)
+}
