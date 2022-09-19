@@ -16,14 +16,6 @@ if(Number(myVariable1) <= Number(myVariable2)) {
     console.log(false)
 }
 
-// Варіант автора
-//parseInt(myVariable1) або додати + перед строкою, наприклад +'35', в такому випадку JS автоматично конвертує значення в число 
-
-// console.log(parseInt(myVariable1) <= parseInt(myVariable2))
-
-// console.log це функція, це вираз, а вираз поветає значення)))
-// Результатлом логічного порівння - повертає логічне значення
-
 myVariable1 = '20'
 myVariable2 = 100
 
@@ -33,3 +25,11 @@ if(Number(myVariable1) <= Number(myVariable2)) {
 } else {
     console.log(false)
 }
+
+// Варіант автора
+//parseInt(myVariable1) або додати + перед строкою, наприклад +'35', в такому випадку JS автоматично конвертує значення в число 
+
+// console.log(parseInt(myVariable1) <= parseInt(myVariable2))
+
+// console.log це функція, це вираз, а вираз поветає значення)))
+// Результатлом логічного порівння - повертає логічне значення
