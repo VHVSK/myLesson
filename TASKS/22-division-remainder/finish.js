@@ -10,3 +10,11 @@
 
 const myNumber1 = 10 // 10 = 3 + 3 + 3 + 1
 const myNumber2 = 3
+
+console.log(myNumber1 % myNumber2)
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+// Асоціативність - типу порядок виконання, злава на право чи інший
+// Пріоритет - це типу * та / має приоритет перед + та -, але так як їх багато, то важлтиво мати падказку
+
+// За посиланням дивіться на таблицю в самому низу
