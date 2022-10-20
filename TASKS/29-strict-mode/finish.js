@@ -7,9 +7,23 @@
 
 'use strict'
 
+let a
 function myFunction() {
   a = 2
   return a
 }
 
 myFunction()
+
+/*
+так правильніше:
+'use strict'
+
+function myFunction() {
+  const a = 2
+  return a
+}
+
+myFunction()
+
+*/
