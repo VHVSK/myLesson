@@ -11,3 +11,32 @@
  *
  * 4. Выведите результирующий массив в консоль
  */
+
+const cars = [
+    {
+        carBrand: 'Brand1',
+        price: 100,
+        isAvailableForSale: false,
+    },
+    {
+        carBrand: 'Brand2',
+        price: 200,
+        isAvailableForSale: true,
+    },
+    {
+        carBrand: 'Brand3',
+        price: 300,
+        isAvailableForSale: false,
+    },
+] 
+
+// , - рекомендується додавати після останньої властивості та старннього об'єкта в масиві, щоб git не показував зміни після додавання
+cars.push({
+    carBrand: 'Brand4',
+    price: 400,
+    isAvailableForSale: true,
+})
+
+
+console.log(cars)
+console.log(cars[2].carBrand)

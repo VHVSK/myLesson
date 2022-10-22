@@ -8,3 +8,12 @@
  */
 
 const myArray = [1, 2]
+
+myArray[10] = 'abc'
+console.log(myArray)
+console.log(myArray.length)
+
+/**
+ * [ 1, 2, <8 empty items>, 'abc' ]
+ * 11
+ */

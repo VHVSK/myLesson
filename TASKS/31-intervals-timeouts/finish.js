@@ -12,3 +12,19 @@
  * "Сообщение номер 4"
  * "Сообщение номер 5"
  */
+
+ let i = 1
+
+ const messageIntervalId = setInterval(() => {
+   console.log('Сообщение номер ' + i)
+   i = i + 1
+ }, 2000)
+ 
+ setTimeout(() => clearInterval(messageIntervalId), 11000)
+
+ /**
+  * setInterval - повертає ІД операції, виконується кожні 2000 мс, це messageIntervalId
+  * clearInterval - зупинити вивід setInterval по messageIntervalId
+  * коли setTimeout більше 10 секунд, то визвати () => clearInterval(messageIntervalId)
+  * колбек функція і в setInterval, і в setTimeout
+  */

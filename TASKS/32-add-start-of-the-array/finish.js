@@ -10,5 +10,11 @@
 const myArray = [true, null]
 
 // Напишите код здесь
+myArray.unshift("Hello")
+
+// unshift - повертає довжину масива після оновлення, тому console.log
+console.log(myArray.unshift(100))
 
 console.log(myArray) // [100, "Hello", true, null]
+
+//[ 100, 'Hello', true, null ]
