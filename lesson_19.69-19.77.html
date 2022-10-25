@@ -78,7 +78,7 @@
             console.log(myArray[key])
         }
 
-        // foreach для перебору властивостей об'кта
+        // foreach для ПЕРЕБОРУ властивостей ОБ'ЄКТА, перевівши їх в масив
         // Object.keys(myObject) - дістати ключі
         // forEach - перебрати
         // keys - ключі
@@ -88,6 +88,12 @@
         // x 10
         // y true
         // z abc
+
+        // Приклад використання з 35 практичного завдання
+        const objectKeys = Object.keys(myObject)
+        objectKeys.forEach((key) => {
+            console.log(myObject[key])
+        })
 
         // аналогічно можна перебрати значення
         // values - значення!

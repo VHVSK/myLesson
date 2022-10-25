@@ -18,3 +18,34 @@ const MIN = 1000
 const MAX = 9999
 
 const myNumbers = [2355, 7235, 8135, 1762, 2361, 8351]
+
+function getRandom(MIN, MAX) {
+    return Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+}
+
+function addArray(myNumbers, MIN, MAX) {
+    let number = getRandom(MIN, MAX);
+
+    myNumbers.forEach((element) => {
+        if(element === number) {
+            addArray(myNumbers, MIN, MAX)
+        }
+    });
+
+    myNumbers.push(number)
+    return number;
+}
+
+addArray(myNumbers, MIN, MAX)
+
+console.log(myNumbers)
+
+/**
+ * Варіант автора, гадаю він кращий, бо визиває менше менше ітерацій...
+  const updatedArr = [...arr]
+
+  do {
+    newRandomNumber = randomNumber(min, max)
+    // console.log(newRandomNumber)
+  } while (updatedArr.includes(newRandomNumber))
+ */
