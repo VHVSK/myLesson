@@ -87,7 +87,7 @@
         // pop - видалити останній елемент масиву, а також повертає видалений елемент
         // shift - видалити перший елемент масива, також повертає виджалений елемент
         // unshift - додати елемент в початок масиву
-        // forEach - арнумент являється функцією
+        // forEach - аргумент являється функцією
         // map - очікує від нас колбек функцію, повертає новий масив
         // та інші
         // Їх можна визивати методом точкового запису
@@ -119,7 +119,7 @@
         // (4) [1, true, 'a', true]
 
         // forEach - перебирає елементи масива
-        // forEach - арнумент являється функцією
+        // forEach - аргумент являється функцією
         // forEach, повертає undefined
         // використовуйте анонімні, стрілочні, колбек
         // Звісно, ми плануємо що в масиві значення це числа, в даному випадку, так як ми пножимо на 2
@@ -131,6 +131,21 @@
         console.log(myArray4)
         // Як видно, ориганалд не змінився
         // (4) [1, true, 'a', true]
+
+        // задача 39
+        const myCities = ['London', 'New York', 'Singapore']
+        const cityInfo = (city, index) =>
+        `${city} is at the index ${index} in the myCities array`
+
+        myCities.forEach((city, index) => console.log(cityInfo(city, index)))
+
+        // Додаток до задачі 39
+        // Якщо ми додамо фігурні дужки (відбувається деструктуризація об'єкту), то ми поредаємо об'єкт, в такому випадку ми можемо змінювати порядок змінник, так як в об'єкті немає різниці який порядок. 
+        // const myCities = ['London', 'New York', 'Singapore']
+        // const cityInfo = ({city, index}) =>
+        // `${city} is at the index ${index} in the myCities array`
+        // myCities.forEach((city, index) => console.log(cityInfo({index, city})))
+        // ... cityInfo({index, city}))) - це ніби такий запис: cityInfo({index: index, city: city})))
 
         // map - очікує від нас колбек функцію, повертає новий масив, аналогічно forEach тільки повертає новий масив
         const myArray5 = [1, 2, 3]
