@@ -89,6 +89,7 @@
         // unshift - додати елемент в початок масиву
         // forEach - аргумент являється функцією
         // map - очікує від нас колбек функцію, повертає новий масив
+        // find() повертає значення масиву першої ітерації в якій true
         // та інші
         // Їх можна визивати методом точкового запису
 
@@ -147,6 +148,8 @@
         // myCities.forEach((city, index) => console.log(cityInfo({index, city})))
         // ... cityInfo({index, city}))) - це ніби такий запис: cityInfo({index: index, city: city})))
 
+        // map
+        // map
         // map - очікує від нас колбек функцію, повертає новий масив, аналогічно forEach тільки повертає новий масив
         const myArray5 = [1, 2, 3]
         console.log(myArray5) // (3) [1, 2, 3]
@@ -171,6 +174,32 @@
             return el * 3
         })
         console.log(newArray3) // (3) [3, 6, 9]
+
+        // З практичної задачі 40
+        // Перебрати масив методом МАП
+        // Варіант 1
+        // метод map повертає масив, тому ми не використовуємо в даному вмпадку foreach
+        const postsJS = postsJSON.map((el) => JSON.parse(el))
+
+        // Варіант 2
+        // Другий варіант, якщо ми передаємо те саме значення, на якому знаходиться ітерація, 
+        // то це короткий варіант запису, JS сам все зробить))
+        const postsJS = postsJSON.map(JSON.parse)
+
+        // Задача 41
+        // Функція приймає код посатв та масив об'єктів
+        // Якщо код поста присутній - він првертає значення данної ітерації
+        function findPostById (idPost, arrPosts) {
+            return arrPosts.find((post) => post.postId === idPost)
+        }
+
+        const posts = [
+            { postId: 1355, commentsQuantity: 5 },
+            { postId: 5131, commentsQuantity: 13 },
+            { postId: 6134, commentsQuantity: 2 },
+        ]
+
+        console.log(findPostById(6134, posts)) // { postId: 6134, commentsQuantity: 2 }
 
     </script>
 </body>
