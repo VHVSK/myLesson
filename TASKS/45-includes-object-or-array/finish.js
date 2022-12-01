@@ -9,6 +9,26 @@
  * а затем применить метод "includes" с аргументом, который также будет преобразован в строку
  */
 
+function isElementInArray(searchElement, inputArray) {
+
+  if(typeof searchElement !== 'object') {
+    return inputArray.includes(searchElement)
+  }
+
+  // Далі потріно searchElement конвертувати в строку
+  // А також inputArray пройтися по всім елементам та також їх конвертувати
+
+  return inputArray
+    .map((element) => JSON.stringify(element))
+    .includes(JSON.stringify(searchElement))
+
+  // цей вираз JSON.stringify(element) повертає строку, стрічлочна функція не явно повертає результат
+  // Результат буде додаватися в новий масив, який поверне метод map
+  // далі, не присвоюючи данні новому масиву, можна визвати метод includes
+  // retur result includes - trye or false
+  
+}
+
 const tags = [
   ['javascript', 'es6'],
   ['css', 'flexbox'],

@@ -10,6 +10,16 @@
  * ПРИМЕЧАНИЕ: Мы предполагаем, что "inputArray" содержит элементы только примитивных типов
  */
 
+const pushIfUnique = (inputArray, newElement) => {
+    if(!inputArray.includes(newElement)) {
+       return inputArray.push(newElement)
+    }
+
+    console.log(`${newElement} уже находится в массиве`)
+}
+
+// Так, рішення автора трохи інше, але суть та сама)))
+
 const myNumbers = [123, 50, 27]
 
 pushIfUnique(myNumbers, 50) // "50 уже в массиве"
