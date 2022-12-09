@@ -7,6 +7,32 @@
  * равными сумме всех количеств в каждой категории
  */
 
+// Варіант 1
+// const quantitiesByCategories = (products) => {
+//   return products.reduce((accumulator, currentValue) => {
+//     accumulator[currentValue.category] = (accumulator[currentValue.category] || 0) + currentValue.quantity
+//     return accumulator
+//   }, {})
+// }
+
+// Варіант 2, викориттовуючи коротший запис, з деструктуризацією
+const quantitiesByCategories = (products) => {
+  return products.reduce((accumulator, currentValue) => {
+
+    const { category, quantity} = currentValue // реструктуризація, це значить, створити дві змінні, та присвоїть їм значення які відповідно відповідають значенням об'єкта currentValue
+
+    accumulator[category] = (accumulator[category] || 0) + quantity
+    return accumulator
+  }, {})
+}
+
+
+/**
+ * () - оператор, має самий верликий приорітет
+ * || - оператор
+ * (accumulator[currentValue.category] || 0) - це витраз, а вираз та АБО повертає перше правдиве
+ */
+
 const inputProducts = [
   {
     title: 'Phone case',

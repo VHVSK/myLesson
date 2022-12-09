@@ -79,6 +79,29 @@
           postiOty, // такі записи краще вказувати на початку об'єкта, також можна сортувати по довжині назви
           myLang: false
         }
+
+        // ЗАДАЧА 48
+        // перебрати масив з об'єктами, дістати значення, створити в новому об'єкті змінну з цим значенням, перевірити чи є таке значення, та зсумувати значення іншого значення.
+        // В задачі 47 також метод reduce
+
+        // Варіант 1
+        // const quantitiesByCategories = (products) => {
+        //   return products.reduce((accumulator, currentValue) => {
+        //     accumulator[currentValue.category] = (accumulator[currentValue.category] || 0) + currentValue.quantity
+        //     return accumulator
+        //   }, {})
+        // }
+
+        // Варіант 2, викориттовуючи коротший запис, з деструктуризацією
+        const quantitiesByCategories = (products) => {
+          return products.reduce((accumulator, currentValue) => {
+
+            const { category, quantity} = currentValue // реструктуризація, це значить, створити дві змінні, та присвоїть їм значення які відповідно відповідають значенням об'єкта currentValue
+
+            accumulator[category] = (accumulator[category] || 0) + quantity
+            return accumulator
+          }, {})
+        }
     </script>
   </body>
 </html>
