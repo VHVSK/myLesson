@@ -285,6 +285,20 @@
       console.log(isElementInArray({ title: "Banana" }, fruits)); // false
 
       console.log(isElementInArray(25, primitiveTypesArray)); // true
+
+      // Сортування, задача 49
+      // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+      // метод sort() конвертує в строки та сортує строки
+      const myNumbers = [50, 23, 29, 10, 103]
+      myNumbers.sort() // [10, 103, 23, 29, 50]
+
+      // Щоб сортувати числа, потріно таким чином
+      myNumbers.sort((a, b) => b - a) // [10, 23, 29, 50, 103]
+      myNumbers.sort((a, b) => a - b) // [103, 50, 29, 23, 10]
+
+      // цей запис розділяє масив на елементи, використовуючи спред оператор "...",  та формує новий, таким чином ми можено не змінювати глобальний масив
+      const copyOfSort = [...products]
+
     </script>
   </body>
 </html>
