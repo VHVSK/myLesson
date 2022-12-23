@@ -12,31 +12,31 @@
       // Що таке функції, це блок коду який можна виконувати багаторазово
       // function - функції, це об'єкт, це блок коду, який маже виконуватися багатократно.
 
-      let a = 5;
-      let b = 3;
+      let a = 5
+      let b = 3
 
-      let c = a + b;
-      console.log(c); // 8
+      let c = a + b
+      console.log(c) // 8
 
-      let a = 8;
-      let b = 12;
+      let a = 8
+      let b = 12
 
-      let c = a + b;
-      console.log(c); // 20
+      let c = a + b
+      console.log(c) // 20
 
       // щоб не було повторення коду потрібно використовувати function
       function sum(a, b) {
-        const c = a + b;
-        console.log(c);
+        const c = a + b
+        console.log(c)
       }
 
       // визвати функцію
-      sum(a, b); // 8
+      sum(a, b) // 8
 
       // змінимо данні і визвати функцію
-      let a = 8;
-      let b = 12;
-      sum(a, b); // 20
+      let a = 8
+      let b = 12
+      sum(a, b) // 20
 
       // Функції можуть бути:
       // ... іменовані
@@ -69,7 +69,7 @@
       // function myFn(a, b) {} - a, b це параметри
       // myFn(10, 3); - 10, 3 це аргументи
 
-      let sum = myFn(10, 3);
+      let sum = myFn(10, 3)
       console.log(sum)
 
       // ПЕРЕДАЧА ЗНАЧЕННЯ ЗА ПОСИЛАННЯМ
@@ -78,11 +78,11 @@
 
       // Приклад передачі об'єкта в функції з мутацією
       const personOne = {
-        name: 'Bob',
-        age: 21
+        name: "Bob",
+        age: 21,
       }
 
-      function incPersonAge ( person ) {
+      function incPersonAge(person) {
         person.age += 1
         return person
       }
@@ -92,11 +92,11 @@
 
       // Приклад без мутації, а зі стренням нового об'єкта
       const personTwo = {
-        name: 'Mila',
-        age: 18
+        name: "Mila",
+        age: 18,
       }
 
-      function incPersonAge2 ( person ) {
+      function incPersonAge2(person) {
         const updatePerson = Object.assign({}, person)
         updatePerson.age += 1
         return updatePerson
@@ -110,8 +110,7 @@
       // callback function - Колбек функції, передати функції інщу функцію і визвати неї з іншої функції, наприклад
 
       // Приклад 1
-      function funcOne() {
-      }
+      function funcOne() {}
 
       function funcTwo(callbackFunc) {
         callbackFunc()
@@ -122,15 +121,39 @@
       // Приклад 2
 
       function printMyName() {
-        console.log('Liza')
+        console.log("Liza")
       }
 
-      setTimeout(printMyName, 1000);
+      setTimeout(printMyName, 1000)
 
       // Правила роботи з функціями
       // Називати функції виходячи з сенсом функції
       // Одна функція на одну задачу
       // Не змінювати зовнішні змінні, тобто варто створювати в середині функції свої змінні, навіть якщо вони передані. Такі функції називаються Чистими функціями.
+
+      // В задачі 53 сказано про замикання в функціях, це коли параметри в методах об'кта, навіть якщо функція виконана, вони все ще доступні
+      // наприклад
+      const photosGallery = (title, dimensions, date) => {
+        return {
+          title,
+          date,
+          [dimensions]: true,
+          info() {
+            console.log(`Фото "${title}" имеет разрешение ${dimensions}`)
+          },
+          publishInfo() {
+            console.log(
+              `Фото "${title}" было опубликовано ${Math.floor(
+                (new Date().getTime() - date.getTime()) / 1000
+              )} секунды назад`
+            )
+          },
+        }
+      }
+
+      const myDogPhoto = photosGallery("My dog", "1920x1080", new Date())
+      myDogPhoto.info() // функція photosGallery вже виконана, а метод все ще доступний
+      setTimeout(() => myDogPhoto.publishInfo(), 2000) // функція photosGallery вже виконана, а метод все ще доступний
     </script>
   </body>
 </html>

@@ -1,42 +1,36 @@
 /** ЗАДАЧА 53 - Сокращенное написание свойств объектов
- * 
+ *
  * 1. Исправьте все ошибки в коде.
- * 
+ *
  * 2. Измените объект, возвращаемый функцией "photosGallery", используя:
  *  - Сокращенные имена свойств
  *  - Сокращенные имена методов
  *  - Также нужно изменить одно свойство объекта
  * и сделать его вычисляемым свойством
- * 
- * 3. Сообщения в консоли должны быть точно такими же, 
+ *
+ * 3. Сообщения в консоли должны быть точно такими же,
  * как и в конце этой задачи
  */
 
 const photosGallery = (title, dimensions, date) => {
   return {
-    title: title,
-    info: function() {
-      console.log(
-        "Фото "${title}" имеет разрешение ${date}`
-      );
+    title,
+    date,
+    [dimensions]: true,
+    info() {
+      console.log(`Фото "${title}" имеет разрешение ${dimensions}`)
     },
-    dimensions: dimensions
-    publishInfo: () => {
+    publishInfo() {
       console.log(
-        `Фото было опубликовано ${Math.floor(
+        `Фото "${title}" было опубликовано ${Math.floor(
           (new Date().getTime() - date.getTime()) / 1000
         )} секунды назад`
-      );
-    ,
-    date: date
+      )
+    },
   }
 }
 
-const myDogPhoto = photosGallery(
-  "My dog",
-  "1920x1080",
-  new Date()
-)
+const myDogPhoto = photosGallery("My dog", "1920x1080", new Date())
 
 const testDimension1 = "1920x1080"
 const testDimension2 = "1080x720"
