@@ -1,59 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Деструктуризація</title>
-</head>
-<body>
-    <script> 
-    // Деструктуризація  об'єктів
-    // Є об'єкт, ми хочемо присвоїти властивості нових змінним, щоб отримати доступи та інші
-    // таким чином, можна це зробити однією сртрокою
+  </head>
+  <body>
+    <script>
+      // Деструктуризація  об'єктів
+      // Є об'єкт, ми хочемо присвоїти властивості нових змінним, щоб отримати доступи та інші
+      // таким чином, можна це зробити однією сртрокою
 
-    const userProfile = {
-        name: 'Bogdan',
+      const userProfile = {
+        name: "Bogdan",
         coments: 23,
-        hasSA: false
-    }
+        hasSA: false,
+      }
 
-    // Наступним кодом ми ствримо нові смінні з існуючого об'єкту
-    const { name, coments} = userProfile
-    const { hasSA } = userProfile
+      // Наступним кодом ми ствримо нові змінні з існуючого об'єкту
+      const { name, coments } = userProfile
+      const { hasSA } = userProfile
 
-    console.log(name) // Bogdan
-    console.log(hasSA) // false
-    
-    
-    // Деструктуризація  масивів
-    // Тут вже важливий порядок, індекс
-    const fruits = ['Apple', 'Banana']
-    const [fruitOne, fruitTwo] = fruits
+      console.log(name) // Bogdan
+      console.log(hasSA) // false
 
-    console.log(fruitOne) // Apple
-    console.log(fruitTwo) // Banana
+      // Деструктуризація  масивів
+      // Тут вже важливий порядок, індекс
+      const fruits = ["Apple", "Banana"]
+      const [fruitOne, fruitTwo] = fruits
 
+      console.log(fruitOne) // Apple
+      console.log(fruitTwo) // Banana
 
-    // Деструктуризація у функціях
-    const userProfile2 = {
-        name: 'Bogdan',
+      // Деструктуризація у функціях
+      const userProfile2 = {
+        name: "Bogdan",
         coments: 23,
-        hasSA: false
-    }
+        hasSA: false,
+      }
 
-    // {name, coments}  - Деструктуризація пареметрів
-    const userInfo = ({name, coments}) => {
-        if(!coments) {
-            return `User ${name} has no comments`
+      // {name, coments}  - Деструктуризація пареметрів
+      const userInfo = ({ name, coments }) => {
+        if (!coments) {
+          return `User ${name} has no comments`
         }
 
         return `User ${name} has ${coments} comments`
-    }
+      }
 
-    userInfo(userProfile2) // 'User Bogdan has 23 comments'
+      userInfo(userProfile2) // 'User Bogdan has 23 comments'
 
-
+      // В задачі 54 про деструктуризіцію
     </script>
-</body>
+  </body>
 </html>
