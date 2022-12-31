@@ -78,7 +78,7 @@
 
       // Приклад передачі об'єкта в функції з мутацією
       const personOne = {
-        name: "Bob",
+        name: 'Bob',
         age: 21,
       }
 
@@ -92,7 +92,7 @@
 
       // Приклад без мутації, а зі стренням нового об'єкта
       const personTwo = {
-        name: "Mila",
+        name: 'Mila',
         age: 18,
       }
 
@@ -121,7 +121,7 @@
       // Приклад 2
 
       function printMyName() {
-        console.log("Liza")
+        console.log('Liza')
       }
 
       setTimeout(printMyName, 1000)
@@ -151,9 +151,23 @@
         }
       }
 
-      const myDogPhoto = photosGallery("My dog", "1920x1080", new Date())
+      const myDogPhoto = photosGallery('My dog', '1920x1080', new Date())
       myDogPhoto.info() // функція photosGallery вже виконана, а метод все ще доступний
       setTimeout(() => myDogPhoto.publishInfo(), 2000) // функція photosGallery вже виконана, а метод все ще доступний
+
+      // Задача 55 - деструктуризація результата функції
+      function minMax(...numbers) {
+        return [Math.min(...numbers), Math.max(...numbers)]
+      }
+
+      let min,
+        max
+        /* Вызовите здесь функцию "minMax" с аргументами 24, 5, 34, 10 
+и используя деструктуризацию массивов присвойте значения переменным "min" и "max" */
+
+        // Щоб не ломався код, Притиер додадає ";", тобто перед деструктуризацією потрібно ставити ";"
+      ;[min, max] = minMax(24, 5, 34, 10)
+      console.log(min, max) // 5, 34
     </script>
   </body>
 </html>

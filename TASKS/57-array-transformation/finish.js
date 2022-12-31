@@ -9,6 +9,34 @@
  * 3. Исходный массив постов должен остаться без изменений
  */
 
+// // Варіант до реструктуризації
+// const processPosts = (posts) => {
+//   return posts.map((post) => {
+//     return {
+//       postId: post.postId + 1000,
+//       postAuthor: post.author,
+//       postCommentsQty: post.commentsQty ? post.commentsQty : 0,
+//       // variant author:
+//       // postCommentsQty: post.commentsQty === undefined ? 0 : post.commentsQty
+//     }
+//   })
+// }
+
+const processPosts = (posts) => {
+  return posts.map((post) => {
+    const {
+      postId,
+      author: postAuthor,
+      commentsQty: postCommentsQty = 0,
+    } = post
+    return {
+      postAuthor, // рекомендація - скорочені розміщувати на початку
+      postCommentsQty,
+      postId: postId + 1000,
+    }
+  })
+}
+
 const testPosts = [
   {
     postId: 234,
