@@ -168,6 +168,48 @@
         // Щоб не ломався код, Притиер додадає ";", тобто перед деструктуризацією потрібно ставити ";"
       ;[min, max] = minMax(24, 5, 34, 10)
       console.log(min, max) // 5, 34
+
+      // Задача 61
+      function sumNumbers() {
+        // Ключове слово arguments - це спеціальний об'єкт, це НЕ масив, список аргументів який передається функції, методи масиву не доступні
+        // arguments.length - доступна кількість аргументів
+        // При цьому, через стрілочні функції ця інформація не доступна
+        //
+        // це варінат вивода через цикл for
+        let sum = 0
+        for (let i = 0; i < arguments.length; i++) {
+          sum += arguments[i]
+        }
+
+        console.log(`Sum of all arguments is ${sum}`)
+        return sum
+      }
+
+      sumNumbers(1, 3)
+
+      // Задача 62
+      // Різниця в різних записах фунекцій
+      // При використанні ключового слоіва function можна переназначити значення змінної (тобто назві функції) firstFunction, тобто можна створити змінну firstFunction = '123'
+      // Також, можгна визивати функції до їх об'явлення і не буде помилки
+      function firstFunction(a, b) {
+        return a + b
+      }
+
+      // вона не має імені
+      // при виористанні const ми не можемо змінювати значення
+      // такий спосіб рідко використовують, частіше використовують без слова function, а використовують стрілочну функцію
+      const secondFunction = function (a, b) {
+        return a + b
+      }
+
+      // стрілочна функція
+      const secondFunction2 = (a, b) => {
+        return a + b
+      }
+
+      console.log(firstFunction(5, 10))
+      console.log(secondFunction(15, 10))
+      console.log(secondFunction2(15, 20))
     </script>
   </body>
 </html>

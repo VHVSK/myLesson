@@ -19,3 +19,33 @@
  * в классе "CustomArray" также будет "push" вместо "customPush"?
  * Попробуйте это.
  */
+
+class CustomArray extends Array {
+  customPush(newElement) {
+    this[this.length] = newElement // додати новий елемент в масив, не збільшимо на 1, бо нумерація з 0, тому кількість елментів якраз і є потріний номер
+    //this.length = this.length + 1 - не знаю чи вірно це, але змінювати довжтину не потріно, так як вона збільшилася автоматично
+    console.log(this)
+    console.log(`Новый элемент ${newElement} был только что добавлен в массив`)
+  }
+}
+const myExtArray = new CustomArray(10, 3, 7)
+myExtArray.customPush(10)
+// CustomArray(4) [ 10, 3, 7, 10 ]
+// Новый элемент 10 был только что добавлен в массив
+
+myExtArray.push(100)
+console.log(myExtArray)
+// CustomArray(5) [ 10, 3, 7, 10, 100 ]
+
+// Зверніть увагу, метод push в класі CustomArray2 має перевагу над методом push в класі Array
+class CustomArray2 extends Array {
+  push(newElement) {
+    this[this.length] = newElement // додати новий елемент в масив, не збільшимо на 1, бо нумерація з 0, тому кількість елментів якраз і є потріний номер
+    //this.length = this.length + 1 - не знаю чи вірно це, але змінювати довжтину не потріно, так як вона збільшилася автоматично
+    console.log(this)
+    console.log(`Новый элемент ${newElement} был только что добавлен в массив`)
+  }
+}
+
+const myExtArray2 = new CustomArray2(10, 3, 7)
+myExtArray2.push(10000)

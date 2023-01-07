@@ -7,10 +7,25 @@
  * 3. Также вызовите обе функции
  */
 
+// Різниця в різних записах фунекцій
+// При використанні ключового слоіва function можна переназначити значення змінної (тобто назві функції) firstFunction, тобто можна створити змінну firstFunction = '123'
+// Також, можгна визивати функції до їх об'явлення і не буде помилки
 function firstFunction(a, b) {
   return a + b
 }
 
+// вона не має імені
+// при виористанні const ми не можемо змінювати значення
+// такий спосіб рідко використовують, частіше використовують без слова function, а використовують стрілочну функцію
 const secondFunction = function (a, b) {
   return a + b
 }
+
+// стрілочна функція
+const secondFunction2 = (a, b) => {
+  return a + b
+}
+
+console.log(firstFunction(5, 10))
+console.log(secondFunction(15, 10))
+console.log(secondFunction2(15, 20))
