@@ -1,0 +1,137 @@
+/*
+div - селектор тегу
+color - властивість
+green - значення
+*/
+
+div {
+    color: green;
+}
+
+/* Типи: * - усі теги */
+* {
+    color: aqua;
+}
+
+/* .title - усі теги з класом .title */
+.title {
+    color: aquamarine;
+}
+
+/* комбінація селекторів, конкретизує вибір */
+div.title {
+    color: aquamarine;
+}
+
+/* якщол вказано одразу два селектора, послідовнясть не важлива */
+.title.title2 {
+    color: aquamarine;
+}
+
+/* перелік, або-або */
+.titleб .title2 {
+    color: aquamarine;
+}
+
+/* #title - селектор, звернення до одного id */
+#title {
+    color: aquamarine;
+}
+
+/* [href] селектор атрибута, застосується до всіх у яких є атрибут href */
+[href] {
+    color: aquamarine;
+}
+
+[title]::before {
+    content: "(?)";
+    color: white;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+[href="test.html"] {
+    color: red;
+}
+
+[href~="test"] {
+    /* якщо тільда, то виьере в яких хоч одне слово співпадає */
+    color: red;
+}
+
+[href|="test"] {
+    /* може співпадати або починатися */
+    color: red;
+}
+
+[href^="test"] {
+    /* якщо починається зі вказаного */
+    color: red;
+}
+
+[href$="test"] {
+    /* якщо заекінчується зі вказаного */
+    color: red;
+}
+
+[href*="test"] {
+    /* усі в яких міститься таке значення */
+    color: red;
+}
+
+/* КАСКАДНІСТЬ */
+
+.title div {
+    /* до div який в середині тегу з класом .title  */
+    color: red;
+}
+
+.title>div {
+    /* до першого div який в середині тегу з класом .title  */
+    color: red;
+}
+
+
+.title~div {
+    /* до наступних, тобто після, div після тегу з класом .title  */
+    color: red;
+}
+
+.title * {
+    /* до всіх тегів, які в середині тегу з класом .title  */
+    color: red;
+}
+
+.title+div {
+    /* звернутися до першого знайденого і якщо він наступний  */
+    color: red;
+}
+
+/* лайф-хак - виділдити попередні, тобто флекс потріно перевернути */
+.items {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.item {
+    border: 1px solid black;
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    background-color: grey;
+}
+
+.item:hover,
+.item:hover~* {
+    background-color: red;
+}
+
+/* ПРІОРІТЕТНІСТЬ СЕЛЕКТОРІВ 
+
+- більший приорітет у останнього по коду
+- більший приорітет який звужує запит, уточнює запит
+- у рядкових, який (inline) стилів (style="") вищих ніж у стилів з окремого файлу (style.css)
+- правило !importing перезаписує приорітем (не рекомендується використовуватич')
+
+*/
