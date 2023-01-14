@@ -1,0 +1,23 @@
+/* ПІДНЯТИ, ЩОБ ПІДНЯВСЯ КОНТЕКТ */
+/* Підняти блок на інший блок, так щоб педнявся весь нижній контент */
+.minusTop {
+  position: relative;
+  z-index: 2;
+  margin: -75px 0 0 0;
+
+  border: 1px solid grey;
+  background-color: aqua;
+}
+
+/* Властивості width та height включають контент,
+внутрішній відступ та межі,
+але не включають зовнішній відступ. Зауважте,
+що внутрішній відступ та межа будуть усередині блоку. */
+.boxBS {
+  width: 500px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  border: 1px solid grey;
+  background-color: linen;
+}
