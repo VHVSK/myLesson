@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML5</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/section"
+      >Проаналізуйте код сторінки цієї статті</a
+    >
+
+    <h1>header</h1>
+    <p>
+      header - Елемент HTML "заголовок" - це вступний вміст, як правило, група
+      Вступні або навігаційні засоби. Він може містити інші елементи заголовка,
+      а також логотип, форма пошуку, ім'я автора та інші Елементи. Не
+      відноситься до секційного елементу! Може використовуватися як заголовок
+      сторінки так і заголовок статті.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/header"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/header</a
+      >
+    </p>
+
+    <h1>Footer</h1>
+    <p>
+      Не відноситься до секційного елементу, є нижнім колонтитулом (футер,
+      підвал) для свого найближчого секційного контенту або секційного кореня,
+      тобто footer може бути як підвал для тега article. Може використовуватися
+      в середині тегу article, footer зазвичай містить інформацію про автора
+      розділу, інформацію про авторське право або посилання на пов'язані
+      документи.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/footer"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/footer</a
+      >
+    </p>
+
+    <h1>main</h1>
+    <p>
+      main - містить весь контент, який користувач має читати, в цього не
+      входять бокові та навігіційні данні, тільки контент, наприклад текст
+      статті з заголовками та абзацами.
+    </p>
+
+    <h1>nav</h1>
+    <p>
+      nav - призначений як блок для навігіції, його можна розмістити як у
+      верхній частині header і в боковій частині aside.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/nav"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/nav</a
+      >
+    </p>
+
+    <h1>aside</h1>
+    <p>
+      aside - це ліва або права частина сторінки, по суті це leftbar або
+      rightbar, часто викоистовуюять для зносок та міток.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/aside"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/aside</a
+      >
+    </p>
+
+    <h1>article</h1>
+    <p>
+      article - частіше всього використовують для контенту, наприклад стаття на
+      форумі, запис в блозі, наприклад картки товарів, може містити в собі теги
+      header, section та Footer. Також може містити в собі самі article.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/article"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/article</a
+      >
+    </p>
+
+    <article class="film_review">
+      <header>
+        <h2>Парк Юрского периода</h2>
+      </header>
+      <section class="main_review">
+        <p>Динозавры были величественны!</p>
+      </section>
+      <section class="user_reviews">
+        <article class="user_review">
+          <p>Слишком страшно для меня.</p>
+          <footer>
+            <p>
+              Опубликовано
+              <time datetime="2015-05-16 19:00">16 мая</time>
+              Лизой.
+            </p>
+          </footer>
+        </article>
+        <article class="user_review">
+          <p>Я согласен, динозавры мои любимцы.</p>
+          <footer>
+            <p>
+              Опубликовано
+              <time datetime="2015-05-17 19:00">17 мая</time>
+              Томом.
+            </p>
+          </footer>
+        </article>
+      </section>
+      <footer>
+        <p>
+          Опубликовано
+          <time datetime="2015-05-15 19:00">15 мая</time>
+          Стаффом.
+        </p>
+      </footer>
+    </article>
+
+    <h1>section</h1>
+    <p>
+      section - Як правило це якийсь розділ, наприклад стаття може містити
+      заголовок Н1, а наступний текст може бути розділений на секції до данної
+      тематики, у кожній секції бажано мати заголовок такий як Н2 та обзаці які
+      описують цю секцію. section не викорстовуйтне як контейнер, для цого є
+      div. div - це як загальний контейнер.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/section"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/section</a
+      >
+    </p>
+
+    <h1>figure, figcaption</h1>
+    <p>
+      Зазвичай це малюнок, ілюстрація, діаграма, фрагмент коду, і т.д., який
+      посилаються в основному потоці документа, але може бути перенесений в іншу
+      частину документа або в додаток не порушивши основний потік. Будучи
+      секційним коренем...
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/figure"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/figure</a
+      >
+      <a
+        href="https://developer.mozilla.org/ru/docs/Web/HTML/Content_categories#%d0%9f%d1%80%d0%be%d1%87%d0%b8%d0%b5_%d0%bc%d0%be%d0%b4%d0%b5%d0%bb%d0%b8_%d0%ba%d0%be%d0%bd%d1%82%d0%b5%d0%bd%d1%82%d0%b0"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/ ... секційним
+        коренем</a
+      >
+    </p>
+    <figure style="border: 1px solid grey">
+      <img src="img.jpg" alt="Elephant at sunset" width="200" />
+      <figcaption>An elephant at sunset</figcaption>
+    </figure>
+
+    <h1>picture</h1>
+    <p>
+      picture - призначений для оптимізації завантаження зображень відповідного
+      розширення.
+      <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/picture"
+        >https://developer.mozilla.org/ru/docs/Web/HTML/Element/picture</a
+      >
+    </p>
+
+    <h1>input: mail, tel, url, source</h1>
+    <p>
+      перевірка поля на ввід перед відправкою. source - дає зрозуміти що це поле
+      для пошуку.
+    </p>
+    <p>
+      Атрибут require - не відправить пустим, maxlenght - масималькість
+      кількість символів які можна ввести
+    </p>
+
+    <h1>input: number, range, color, date, week, month</h1>
+    <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input/range"
+      >https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input/range</a
+    >
+
+    <p>Audio settings:</p>
+    <div>
+      <input type="range" id="volume" name="volume" min="0" max="11" />
+      <label for="volume">Volume</label>
+    </div>
+
+    <div>
+      <input
+        type="range"
+        id="cowbell"
+        name="cowbell"
+        min="0"
+        max="100"
+        value="90"
+        step="10"
+      />
+      <label for="cowbell">Cowbell</label>
+    </div>
+
+    <h1>progress</h1>
+    <progress></progress>
+
+    <h1>audio, video</h1>
+    <p>Вивід аудіо та відео</p>
+
+    <h1>canvas</h1>
+    <p>Малювання фігур, ліній, дуг, контурів, базьє, криві</p>
+  </body>
+</html>

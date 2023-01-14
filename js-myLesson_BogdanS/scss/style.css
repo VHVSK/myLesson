@@ -1,0 +1,149 @@
+@charset "UTF-8";
+div {
+  background-color: red;
+  border: 1px solid green;
+  font-size: Arial, Tahoma, sans-serif;
+}
+
+.test {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+nav {
+  color: red;
+}
+nav li {
+  color: green;
+}
+
+/* Описати псевдоклас */
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Щоб розбити на файли або на блоки наш стиль
+* потріно створити файл сцсс назва якого починається на _
+* та імпортувати його
+*/
+* {
+  margin: 0px;
+}
+
+/* mixin - це такі шаблони, які можна створювати і додавати до елементів */
+a {
+  font-size: 28px;
+  font-weight: bold;
+  color: aqua;
+}
+
+/* також в mixin можна передавати параметри, ніби то як в функції  */
+a.new {
+  font-size: 28px;
+  font-weight: bold;
+  color: blue;
+}
+
+/* 2 ваірант, як в фуекціях ПХП можна прописувати знаячення змінних, а також змінювати місціями якщо сказати назву змінної. font - як функції ПХП */
+a.new2 {
+  font-size: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+a.new3 {
+  font-size: 11px;
+  color: green;
+  font-weight: bold;
+}
+
+a.new4 {
+  font-size: 12px;
+  color: grey;
+  font-weight: bold;
+}
+
+/* можна переджавати необмежену кількість параметрів, потріно вказати три крапки ... */
+a.new5 {
+  padding: 10px 20px 30px 40px;
+}
+
+#grid {
+  float: left;
+  width: 100%;
+}
+#grid > div {
+  border: 0px;
+  float: left;
+  background: grey;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  height: 150px;
+  width: 32%;
+}
+#grid > div:nth-child(3n) {
+  margin-right: 0px;
+}
+#grid > div:hover {
+  background-color: #990000;
+}
+
+#grid_if {
+  float: left;
+  width: 100%;
+}
+#grid_if > div {
+  border: 0px;
+  float: left;
+  background: silver;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  height: 150px;
+  width: 100%;
+  margin-right: 0px;
+}
+#grid_if > div:nth-child(6n) {
+  margin-right: 0px;
+}
+#grid_if > div:hover {
+  background-color: #990000;
+}
+
+.testStyle-5 {
+  width: 55px;
+}
+
+.testStyle-6 {
+  width: 56px;
+}
+
+.testStyle-7 {
+  width: 57px;
+}
+
+.testStyle-8 {
+  width: 58px;
+}
+
+.testStyle-9 {
+  width: 59px;
+}
+
+a.test {
+  font-weight: bold;
+}
+
+a.content {
+  font-weight: bold;
+  align-content: center;
+}
+
+a.test3 {
+  font-weight: bold;
+}/*# sourceMappingURL=style.css.map */
