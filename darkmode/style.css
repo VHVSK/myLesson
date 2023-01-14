@@ -1,0 +1,50 @@
+/* body {
+    transition: all 300ms ease 0s;
+    background-color: white;
+    color: black;
+} */
+
+/* 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+} */
+
+html.dark body {
+    transition: all 300ms ease 0s;
+    background-color: black;
+    color: white;
+}
+
+html.light body {
+    transition: all 300ms ease 0s;
+    background-color: white;
+    color: black;
+}
+
+html.dark .themeButton {
+    background: url(./9024829_sun_light_icon.svg) 0 0 / 100% no-repeat;
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+}
+
+html.light .themeButton {
+    background: url(./2205210_dard_moon_night_stars_icon.svg) 0 0 / 100% no-repeat;
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+}
+
+.resetButton {
+    background: url(./9041914_reset_alt_icon.svg) 0 0 / 100% no-repeat;
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+}
+
+.active {
+    background-color: green;
+}

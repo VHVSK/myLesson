@@ -1,0 +1,11 @@
+body {
+    color: darkcyan;
+    background-color: white;
+    transition: all 300ms ease 0s;
+}
+
+.dark-mode {
+    color: white;
+    background-color: darkcyan;
+    transition: all 300ms ease 0s;
+}
