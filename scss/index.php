@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>SCSS</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>SCSS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Это содержимое тега макета H1</h1>
-    <div class="test">Red</div>
-    <div class="test">Green</div>
-    <div class="test">Blue</div>
-  
+  <h1>Заголок!</h1>
+  <div class="test">Red</div>
+  <div class="test">Green</div>
+  <div class="test">Blue</div>
+
   <div id="grid">
     <div>1</div>
     <div>2</div>
@@ -23,7 +25,7 @@
     <div>9</div>
     <div>10</div>
   </div>
-  
+
   <div id="grid_if">
     <div>1</div>
     <div>2</div>
@@ -36,7 +38,8 @@
     <div>9</div>
     <div>10</div>
   </div>
-  
-  
+
+
 </body>
+
 </html>
