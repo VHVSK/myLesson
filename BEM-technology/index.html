@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BEM</title>
+  </head>
+  <body>
+    <h1>BEM - Блок Елемент Модифікатор</h1>
+
+    <div>
+      <h3>Принципи:</h3>
+      <ul>
+        <li>Задаватися питанням - Що це? А не як виглядає...</li>
+        <li>
+          Назви класів пишуть латинськими літерами, а слова розділяти
+          <b>тире</b>
+        </li>
+        <li>
+          Підбираючи назу, потрібно максимально відобразити їх вміст, наприклад:
+          меню, логотип
+        </li>
+        <li>
+          Назву блоку варто записувати таким чином:
+          <b>імя-блоку</b>
+        </li>
+        <li>
+          Для стилів не варто задавати їм зовнішню геометрію або позиціонування,
+          такі як відступи, так як в інших місцях коду це може не знадобитися.
+          Щоб вогни булии не залежні.
+        </li>
+        <li>
+          Блоки можна вкладувати один в одного, долпускається люба вкладеність
+          блоків
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Овновні принципи:</h3>
+      <ul>
+        <li>
+          Назву елементам варто записувати таким чином:
+          <b>імя-блоку__імя-елемента</b>. Відповідно, якщо є __ - значить це
+          елемент.
+          <span style="color: dodgerblue; display: block"
+            >Приклад (дивитися код) -></span
+          >
+          <!-- 
+            menu - блока
+            menu__link - елемент
+
+            <nav class="menu">
+                <a href="" class="menu__link">Home</a>
+                <a href="" class="menu__link"></a>
+                <a href="" class="menu__link"></a>
+                <a href="" class="menu__link"></a>
+            </nav> 
+         -->
+        </li>
+        <li>
+          Елементи можна вкладувати один в одного, долпускається люба
+          вкладеність елементів.
+          <b
+            >Але,елементи це завжди частина блока! Вкладувати елементи в
+            середину елементів не можна!!!</b
+          >
+          <span style="color: dodgerblue; display: block"
+            >Приклад (дивитися код) -></span
+          >
+          <!-- 
+            Так правильно:
+            <div class="row"> блок
+                <div class="row__column"> елемент
+                    <div class="row__item"></div> елемент
+                </div>
+            </div>
+
+            Так НЕ правильно:
+            <div class="row">
+                <div class="row__column"> 
+                    <div class="row__column__item"></div>
+                </div>
+            </div>
+         -->
+        </li>
+        <li>
+          Елемент - це основна складова частина блоку, вона не може
+          викоритовуватися у відриві від неї. Як і для блока, потріно питати -
+          Що це?..
+
+          <span style="color: dodgerblue; display: block"
+            >Приклад (дивитися код) -></span
+          >
+          <!-- 
+            It is right:
+            <div class="about">
+                <div class="about__title"></div>
+                <div class="about__subtitle"></div>
+            </div> 
+
+            It is wrong:
+            <div class="about">
+                <div class="about__title"></div>
+            </div> 
+            <div class="about__subtitle"></div>
+         -->
+        </li>
+        <li>
+          Елементи не обов'язково має бути присутнім у блоці, блок може бути без
+          елементів!
+          <span style="color: dodgerblue; display: block"
+            >Приклад (дивитися код) -></span
+          >
+          <!-- 
+            It is right:
+            <div class="about">
+                <div class="title"></div>
+                <div class="subtitle"></div>
+            </div> 
+         -->
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Так коли створювати блок, а коли елемент?</h3>
+      <ul>
+        <li>
+          Створюйте блоки коли він може використовуватися повторно, самостійно,
+          при цьому від не залежить від реалізації інших компонентів сторінки.
+        </li>
+        <li>
+          Створюйте елемент, якщо фрагмент коду не може або не буде
+          використовуватися самостійно.
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Модифікатор</h3>
+      <ul>
+        <li>Доповнює абло кточнює стиль блока чи елемента.</li>
+        <li>
+          Ім'я коаса має відповідати: Який, як виглядає, як себе поводить.
+        </li>
+        <li>
+          Назва класу модифікатора таким чином: <b>імя-блоку_модифікатор</b>,
+          <b>імя-блоку__імя-елемента_модифікатор</b>. Відповідно, якщо є _ -
+          значить це модифікатор.
+          <span style="color: dodgerblue; display: block"
+            >Приклад (дивитися код) -></span
+          >
+          <!-- 
+            menu - блока
+            menu__link - елемент
+            menu__link_active - назва класу модифікатора
+
+            <nav class="menu">
+                <a href="" class="menu__link menu__link_active">Home</a>
+                <a href="" class="menu__link"></a>
+                <a href="" class="menu__link"></a>
+                <a href="" class="menu__link"></a>
+            </nav> 
+         -->
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Прийом Мікс</h3>
+      <ul>
+        <li>
+          Це значить, що в одному об'єкті можна використовуваати і блоки, і
+          елементи
+        </li>
+        <li>
+          Мікс позволяє вирішувати задачі без дублювання коду. Таким чином ми
+          можемо задати зовняшню геоментрію або позиціонування about__title, а
+          сам title залишити універсальним, таким чином блок title можна
+          будлювати і використовувати в любому іншому місці.
+        </li>
+        <span style="color: dodgerblue; display: block"
+          >Приклад (дивитися код) -></span
+        >
+        <!-- 
+            <div class="about">
+                <div class="about__title title">Являється елементом і одночасно блоком!</div> 
+                <div class="about__subtitle subtitle">Являється елементом і одночасно блоком!</div>
+            </div> 
+         -->
+      </ul>
+    </div>
+
+    <div>
+      <a href="test.html">test.html</a>
+    </div>
+
+    <div class="row">
+      <div class="row__column">
+        <div class="row__item"></div>
+      </div>
+    </div>
+  </body>
+</html>
