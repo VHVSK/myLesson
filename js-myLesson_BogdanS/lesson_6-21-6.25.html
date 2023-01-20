@@ -207,6 +207,14 @@
         return a + b
       }
 
+      // Стрілочна коллбек функція
+      const helloWorld = () => console.log('Hello World!')
+      setTimeout(helloWorld, 5000)
+
+      // ще варіант коллбек функція
+      const isNumber = (a) =>
+        typeof a === 'number' ? `${a} - это число` : `${a} - это не число`
+
       console.log(firstFunction(5, 10))
       console.log(secondFunction(15, 10))
       console.log(secondFunction2(15, 20))
