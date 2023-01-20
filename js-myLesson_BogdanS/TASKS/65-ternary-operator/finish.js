@@ -2,14 +2,15 @@
  *
  * Измените функцию "isNumber", используя тернарный оператор
  */
-
+ 
+ /**
 function isNumber(a) {
-  if (typeof a === 'number') {
-    return `${a} - это число`
-  } else {
-    return `${a} - это не число`
-  }
+  return typeof a === 'number' ? `${a} - это число` : `${a} - это не число`
 }
+*/
+
+// const inNumber = (number) => typeof a === 'number' ? `${a} - это число` : `${a} - это не число`
+// Це тестовий запис в новій гілці
 
 console.log(isNumber(10))
 // 10 - это число
