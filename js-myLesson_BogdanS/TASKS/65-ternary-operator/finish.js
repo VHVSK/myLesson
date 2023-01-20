@@ -10,7 +10,7 @@ function isNumber(a) {
 */
 
 // const inNumber = (number) => typeof a === 'number' ? `${a} - это число` : `${a} - это не число`
-// Це тестовий запис
+// Це тестовий запис в новій гілці
 
 console.log(isNumber(10))
 // 10 - это число
