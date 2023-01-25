@@ -45,3 +45,102 @@ function testAlertRemovEL() {
 button_4.addEventListener('click', testAlertRemovEL)
 
 // 7-31 Параметри
+// можна посилатися на об'єкт з параметрами
+const option = {
+  capture: false, // фаза на якій має спрацювати обробник події, тобто якщо призначення на якомусь середньому шарі, то при занурені він спрацює, детальніше нижче на Звнурені та вспливанні
+  once: false, // якщо true, то обробник буде автоматично видалений після виконання, ніби доданий removeEventListener
+  passive: false, // якщо true, то обробник ніколи не визве prevenDefault(), тобто ми не будемо забороняти виконувати події за умовчанням
+}
+
+button_4.addEventListener('click', testAlertRemovEL, option)
+
+// Або записати параметри відразу третім аргументом
+button_4.addEventListener('click', testAlertRemovEL, { capture: false })
+
+// ОБ'ЄКТ ПОДІЇ //
+// називають його event, це об'єкт який записує браузер коли відбувається подія, далі можна передати його в якості аргумента обробнику функції
+const button_5 = document.querySelector('.button_5')
+
+button_5.addEventListener('click', showConsole)
+// button_5.addEventListener('mouseenter', showConsole)
+
+function showConsole(event) {
+  console.log(`Тип обробника type: ${event.type}`)
+  console.log(`Об'єкт на скому спрацював обробник target: ${event.target}`)
+  console.log(event.target)
+  console.log(
+    `Об'єкт до якого призначений обробник currentTarget: ${event.currentTarget}`
+  )
+  console.log(event.currentTarget)
+  console.log(
+    `Координати кліка відносоно вікна браузера clientX: ${event.clientX}`
+  )
+  console.log(
+    `Координати кліка відносоно вікна браузера clientY: ${event.clientY}`
+  )
+
+  console.log(`Всі деталі event: ${event}`)
+  console.log(event)
+}
+
+// ВСПЛИВАННЯ ТА ЗАНУРЕННЯ (маєтться на увазі, подія спочатку погружається вниз слоїв, а потім піднімається вверх по слоям) //
+// Уявімо ситуацію, коли ми маємо вкладені блоки до кожного слухаємо подію, то якшщо ми клікнемо по блоку який знаходиться вище, то в нижньому також спрацює ця подія
+// щоб зупинити спрацювання тподії на нижніх блоках:
+button_5.addEventListener('click', (event) => {
+  console.log(`Спрацював: event.stopPropagation()`)
+  event.stopPropagation()
+})
+
+const divPink = document.querySelector('.stopPropagation')
+
+divPink.addEventListener('click', (event) => {
+  console.log('--- Click on pink div ---')
+})
+
+// занурення, тобто, якщо в нас є три шари блоків, до середнього шару призначена опція capture: false - то спочатку при занурені спрацює подія середнього блоку, потім нижнього блоку, потім коли буде вспливати, то спрацює вже подія верхнього блоку.
+// фаза на якій має спрацювати обробник події, тобто якщо призначення на якомусь середньому шарі, то при занурені він спрацює, а коли обробник буде підніматися, то спрацють всі інші
+
+// ДЕЛЕГУВАННЯ ПОДІЙ //
+// Наприклад, в нас багато об'єктів на які ми хочемо повітити подію, а це в свою чергу добряче грузить систему
+// Тому, потрібно повідити подію на один батьківський об'єкт, при винекнені події отримати об'єкт на який клікнули (target, currentTarget) і перевіряємо чи це той об'єкт (наприклад чи кнопка)
+// завдякий цьому рішеню, дуже добре реалізовувати наприклад Меню, якщо клік в іншому місці, то меню закривається
+const lesson = document.querySelector('.lesson')
+
+lesson.addEventListener(
+  'click',
+  (e) => (e.target.closest('.button_lesson') ? showConsole2() : showConsole3())
+  // closest - перевірка чи це цей об'єкт
+)
+
+function showConsole2() {
+  console.log('Спрацював клік на кнопці по події батьківського блоку')
+}
+function showConsole3() {
+  console.log('Спрацював на батьківському блоку')
+}
+
+// ВІДМІНИТИ ПОДІЇ БРАУЗЕРА ЗА УМОВЧАННЯМ - prevenDefault()
+const link = document.querySelector('.link')
+const link2 = document.querySelector('.link2')
+
+link.addEventListener('click', (e) => {
+  alert('Виконуємо свої дії та відміняємо перехід через e.preventDefault()!')
+  e.preventDefault()
+})
+
+link2.onclick = () => {
+  alert('Виконуємо свої дії та відміняємо перехід через return false!')
+  return false
+}
+
+// ще один параметр наперед повідомляє браузеру, що подія за умовчанням НЕ ЗБИРАЄТЬСЯ ВІДМІНЯТИ подію за умовчанням, щоб ще менше навантажувати систему і вона працювала плавно
+link.addEventListener(
+  'click',
+  (e) => {
+    alert('Виконуємо свої дії та відміняємо перехід через e.preventDefault()!')
+    //e.preventDefault() - в даному випадку не можна визивати цей метод
+  },
+  { passive: true }
+)
+
+// 22,52

@@ -50,6 +50,16 @@ div.title {
     margin-right: 5px;
 }
 
+.menu__btn span:first-child {
+    display: none;
+    /* перший потомок */
+}
+
+.menu__btn span:last-child {
+    display: block;
+    /* останній потомок */
+}
+
 [href="test.html"] {
     color: red;
 }
