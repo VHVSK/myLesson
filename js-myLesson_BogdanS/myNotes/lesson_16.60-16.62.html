@@ -40,7 +40,7 @@
         hasSA: false,
       }
 
-      // {name, coments}  - Деструктуризація пареметрів
+      // {name, coments}  - Деструктуризація ПАРАМЕТРІВ
       const userInfo = ({ name, coments }) => {
         if (!coments) {
           return `User ${name} has no comments`
@@ -52,7 +52,6 @@
       userInfo(userProfile2) // 'User Bogdan has 23 comments'
 
       // В задачі 54, 55, 56, 57, 58 про деструктуризіцію
-
       // В задачі 58
       let person = {
         _id: '5ad8cefcc0971792dacb3f1f',
@@ -69,6 +68,37 @@
         let _id, processed, cart
         ;({ _id, processed, cart, ...person } = person)
       }
+
+      // Задача 69 - Деструктуризація о'бєкта
+      // OPTION 1
+      const mult = (detstrObj) => {
+        const { x, y, z } = detstrObj
+        return x * y * z
+      }
+
+      // OPTION 2
+      const mult2 = ({ x, y, z }) => {
+        return x * y * z
+      }
+
+      // OPTION 3
+      const mult3 = ({ x, y, z }) => x * y * z
+
+      const result = mult(objectWithNumbers)
+
+      // Задача 70
+      // Деструктуризація масиву та rest оператор
+      const arr = [1, 2, 3, 4, 5, 6, 7]
+
+      // призначаємо першому та другому індексу значення, а третьому - залишок масиву
+      const [a, b, ...c] = arr
+
+      console.log(a)
+      // 1
+      console.log(b)
+      // 2
+      console.log(c)
+      // [3, 4, 5, 6, 7]
     </script>
   </body>
 </html>
