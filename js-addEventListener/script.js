@@ -119,6 +119,22 @@ function showConsole3() {
   console.log('Спрацював на батьківському блоку')
 }
 
+// 22,52
+// меню, в мене цей приклад не працює, але суть ідеї зрозуміла
+// Як і сказава автор, це не кращий варіат по продуктивності
+const menuBody = document.querySelector('.menu')
+
+menuBody.addEventListener('click', menu)
+
+function menu(event) {
+  if (event.target.closest('.menu__button')) {
+    menuBody.classList.toggle('_active')
+  }
+  if (!event.target.closest('.menu')) {
+    menuBody.classList.remove('_active')
+  }
+}
+
 // ВІДМІНИТИ ПОДІЇ БРАУЗЕРА ЗА УМОВЧАННЯМ - prevenDefault()
 const link = document.querySelector('.link')
 const link2 = document.querySelector('.link2')
@@ -143,4 +159,37 @@ link.addEventListener(
   { passive: true }
 )
 
-// 22,52
+// 28:48
+// ПОДІЇ МІШКИ
+
+// Прості:
+// mousedown / mouseup - кнопка натиснута та відпущена
+// mouseover / mouseout - момент повя та відходу з елемента
+// mousemove - кожен рух миши генерує цю подію
+// contextmenu - правою кнопкою миши або іншими методами визвати контекстне меню
+
+/**
+ * Комплексні:
+ * click - визивається mousedown і потім mouseup над одним і тим самим об'єктом
+ * dblclick - подвійний клік на елементі
+ */
+
+const mouseEventBtn = document.querySelector('.mouseEvent')
+
+mouseEventBtn.addEventListener('mousedown', (event) => {
+  console.log(`Яка кнопка натиснута: ${event.which}`)
+})
+mouseEventBtn.addEventListener('click', () => {
+  console.log('Click')
+})
+mouseEventBtn.addEventListener('contextmenu', () => {
+  console.log('contextmenu')
+})
+
+// Рух миши
+// 33:25
+const boxXY = document.querySelector('.boxXY')
+
+boxXY.addEventListener('mousemove', (e) => {
+  boxXY.innerHTML = `clientX: - ${e.clientX} (${e.offsetX}) <br> clientY: - ${e.clientY} (${e.offsetY})`
+})
