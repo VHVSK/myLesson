@@ -81,6 +81,17 @@
       // 20
       // 30
       // true
+
+      // ЗАДАЧА 79 - Самовстійне опрацювання з методом reduce
+      function sumObjectValues_reduce(nums) {
+        return Object.keys(nums).reduce(
+          (accumulator, currentValue) =>
+            typeof nums[currentValue] === 'number'
+              ? accumulator + nums[currentValue]
+              : accumulator,
+          (initialValue = 0)
+        )
+      }
     </script>
   </body>
 </html>

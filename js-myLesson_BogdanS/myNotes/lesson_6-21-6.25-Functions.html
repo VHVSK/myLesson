@@ -218,6 +218,24 @@
       console.log(firstFunction(5, 10))
       console.log(secondFunction(15, 10))
       console.log(secondFunction2(15, 20))
+
+      // Задача 77
+      // Повернути у фіункції обєкт з методами
+      // зверніть увагу, після визву createGreeting все ще будуть доступці методи greet та changeGreeting, ми можемо визивати її скільки потріно разів - це називається Замикання (Clousers)
+      function createGreeting() {
+        let greetingString = 'Hey, this is'
+
+        function greet(name) {
+          return `${greetingString} ${name}`
+        }
+
+        function changeGreeting(newGreating) {
+          greetingString = newGreating
+        }
+
+        return { greet, changeGreeting } // обєкт з методами
+        // зверніть увагу, поветаємо змінні-функції без аргументів, аргументи будемо додавати при визові
+      }
     </script>
   </body>
 </html>

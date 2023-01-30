@@ -294,7 +294,7 @@
       myNumbers.sort((a, b) => b - a) // [10, 23, 29, 50, 103]
       myNumbers.sort((a, b) => a - b) // [103, 50, 29, 23, 10]
 
-      // цей запис розділяє масив на елементи, використовуючи оператор spred (три крапки) (рест, rest) оператор "...",  та формує новий, таким чином ми можено не змінювати глобальний масив
+      // цей запис розділяє масив на елементи, використовуючи оператор spred (спред, три крапки) (рест, rest) оператор "...",  та формує новий, таким чином ми можено не змінювати глобальний масив
       const copyOfSort = [...products]
 
       // Приклад з задачі 51
@@ -342,6 +342,119 @@
       // JSON.parse(...) - створить масив
       // ВАЖЛИВО: 1 та 2 варіант не зберагіють вложені ОБ'ЄКТИ, вони передають посиалння на об'єкт
       // а 3 варіант робить глибинний розбір, навіть вкладені будуть розібрані, також третій варіант застосовують і для розбору об'єктів
+
+      // ЗАДАЧА 80
+      // Спред оператор розбирає властивості об'єкта і ми можемо змінити тільки одну властивість, інші без змін
+      function sumPositiveNegative2(arr) {
+        return arr.reduce(
+          (sums, num) => {
+            if (num > 0) {
+              return {
+                ...sums, // Якщо у нас більше властивостей, ми можемо всі розібрати і тальки потріне змінити, тобто спочатку ВСІ розібрати, а потім перезаписати
+                positive: sums.positive + num,
+              }
+            }
+
+            return {
+              ...sums, // Аналогічно
+              negative: sums.negative + num,
+            }
+          },
+          { positive: 0, negative: 0 }
+        )
+      }
+
+      // ЗАДАЧА 75 - перебор строки по символам, пошук значення в строці
+      let vowelsCount = 0
+      let vowelsCount2 = 0
+      const vowels = ['a', 'e', 'i', 'o', 'u']
+
+      const str = 'Today is the best day of my life'
+
+      // Варіант 1
+      // Перетворити строку на масив: метод split()
+      str.split('').forEach((char) => {
+        if (vowels.includes(char)) {
+          vowelsCount++
+        }
+      })
+
+      // варіант 2
+      for (const char2 of str) {
+        if (vowels.includes(char2)) {
+          vowelsCount2++
+        }
+      }
+
+      console.log(vowelsCount)
+      console.log(vowelsCount2)
+
+      // ЗАДАЧА 79, передрати масив
+      const objectWithNumbers2 = {
+        a: 10,
+        b: 20,
+        c: 'string',
+        d: 12,
+      }
+
+      function sumObjectValues(nums) {
+        let sum = 0
+        // за допогою Object.keys() - статичний метод який знаходиться в об'єкті, Object - це батьківський клас всіх об'єктів в JS, оримаємо масив ключів ВЛАСНОГО об'єкта (без унаслідуваних)
+        // перебрати ці ключі
+        Object.keys(nums).forEach((key) => {
+          if (typeof nums[key] === 'number') {
+            sum += nums[key]
+          }
+        })
+
+        return sum
+      }
+
+      const result = sumObjectValues(objectWithNumbers2)
+      console.log(result)
+      //42
+
+      // ЗАДАЧА 79 - перебрати значення об'єкта, яке ПЕРЕТВОРИЛИ НА МАСИВ
+      const objectWithNumbers = {
+        a: 10,
+        b: 20,
+        c: 'string',
+        d: 12,
+      }
+
+      function sumObjectValues(nums) {
+        let sum = 0
+        // за допогою Object.keys() - статичний метод який знаходиться в об'єкті, Object - це батьківський клас всіх об'єктів в JS, оримаємо масив ключів ВЛАСНОГО об'єкта (без унаслідуваних)
+        // перебрати ці ключі
+        Object.keys(nums).forEach((key) => {
+          if (typeof nums[key] === 'number') {
+            sum += nums[key]
+          }
+        })
+
+        return sum
+      }
+
+      // самостійне опрацювання з методом reduce
+      function sumObjectValues_reduce(nums) {
+        return Object.keys(nums).reduce(
+          (accumulator, currentValue) =>
+            typeof nums[currentValue] === 'number'
+              ? accumulator + nums[currentValue]
+              : accumulator,
+          (initialValue = 0)
+        )
+      }
+
+      // самостійне опрацювання з методом entries
+      function sumObjectValues_entries(nums) {
+        let sum = 0
+        Object.entries(nums).forEach((Element) =>
+          typeof Element[1] === 'number' ? (sum += Element[1]) : 0
+        )
+
+        return sum
+      }
     </script>
   </body>
 </html>
