@@ -49,6 +49,3 @@ class helloWorld extends Component {
     return <h1>helloworld</h1>
   }
 }
-
-// test 
-// tedt2
