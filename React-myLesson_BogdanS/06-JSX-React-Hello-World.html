@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/babel-standalone@6/babel.min.js"
+      crossorigin
+    ></script>
+    <script type="text/babel">
+      // const reactHelloHeading = React.createElement(
+      //   'h1',
+      //   null,
+      //   'Hello from React'
+      // )
+
+      // Торбто, замість верхнього коду ми пишемо скорочений запис, це мова JSX (щось типу SCSS), за допомогою Babel цей текст трансформується в валідний JS
+      // Щоб код виконався, ми маємо підключити бібліотеку   babel
+      // за посиалгнням: https://unpkg.com/babel-standalone@6/babel.min.js
+      // а такоє атрибут в: <script type="text/babel">...
+
+      // Також, ми отримуємо не важливу помилку, що запускати в самому веб-браузері babel не варто, тому готуючи вихід в продакшн, це потрібно зробити завчасно, тоді підключати babel і визивати його не знадобиться
+
+      const reactHelloHeading = <h1>Hello from React</h1>
+
+      const container = document.getElementById('app')
+      const root = ReactDOM.createRoot(container)
+      root.render(reactHelloHeading)
+    </script>
+  </body>
+</html>
