@@ -164,7 +164,7 @@ link.addEventListener(
 
 // Прості:
 // mousedown / mouseup - кнопка натиснута та відпущена
-// mouseover / mouseout - момент повя та відходу з елемента
+// mouseover / mouseout - момент повя та відходу з елемента та mouseenter / mouseleave
 // mousemove - кожен рух миши генерує цю подію
 // contextmenu - правою кнопкою миши або іншими методами визвати контекстне меню
 
@@ -193,3 +193,64 @@ const boxXY = document.querySelector('.boxXY')
 boxXY.addEventListener('mousemove', (e) => {
   boxXY.innerHTML = `clientX: - ${e.clientX} (${e.offsetX}) <br> clientY: - ${e.clientY} (${e.offsetY})`
 })
+
+// mouseover / mouseout
+// тут є крута властивість target, relatedTarget
+const mouseOverAndOut = document.querySelector('.mouseEventMouseOverOut')
+
+mouseOverAndOut.addEventListener('mouseover', (e) => {
+  mouseOverAndOut.innerHTML =
+    'Курсор над полем. Плюс властивість target: ' +
+    e.target +
+    '; relatedTarget: ' +
+    e.relatedTarget +
+    '; Це типу куди зайшов і куди пішов!'
+})
+
+mouseOverAndOut.addEventListener('mouseout', (e) => {
+  mouseOverAndOut.innerHTML =
+    'Курсор НЕ над полем. Плюс властивість target: ' +
+    e.target +
+    '; relatedTarget: ' +
+    e.relatedTarget
+})
+
+// також, будьте уважні, якщо об'єкт буде містити в собі дочерні елементи, і коли курсор буде переходлити на дочерній об'єкт, то спрацює "вспливання події", тобто спочатку він вийде а потім знову зайде
+// mouseenter / mouseleave - аналошгічно, тільки без встпливання, в свою чергу це зменшує навантажегня коли нам не потрібне "встпливання", з іншої сторни в нас немає делегування
+// mouseover / mouseout є делегування, дивіться вище що це таке в прикладі меню
+
+// 41.37 - Приклад функції перетягування об'єкта в межах поля і визвати подія якщо він буде над вкладеним елементом, функція drag-n-drop
+
+// ПОДІЇ КЛАВІАТУРИ
+// keydown - клавіша натиснута
+// keyup - клавіша відпущена
+// також, вони мають властивості event.code, event.key
+// event.code -не змінюється
+// event.key - змінюєтьтся в залежності від мови та капса
+
+const input = document.getElementById('inputTxt')
+const resulInput = document.getElementById('resulInput')
+
+input.addEventListener('keydown', (e) => {
+  resulInput.innerHTML = `Натиснута: e.code: ${e.code}; e.key: ${e.key}`
+})
+input.addEventListener('keyup', (e) => {
+  resulInput.innerHTML = `Відрпущена: e.code: ${e.code}; e.key: ${e.key}`
+})
+
+// Щоб відстілкувати поєднання клавіш
+input.addEventListener('keydown', (e) => {
+  if (e.code == 'KeyZ' && (e.ctrlKey || e.metaKey)) {
+    alert('Відміна дії')
+    // e.metaKey - на Mac
+  }
+})
+
+// Відстежити якщо клавіша натиснена та не відпущення, тобтто відбувається автоповтор
+const repeatEvent = document.getElementById('repeat')
+input.addEventListener('keydown', (e) => {
+  repeatEvent.innerHTML = ' Чи утримується клавіша: ' + e.repeat
+})
+
+// ПОДІЇ СКРОЛА
+// 49:15
