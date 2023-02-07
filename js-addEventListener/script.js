@@ -253,4 +253,60 @@ input.addEventListener('keydown', (e) => {
 })
 
 // ПОДІЇ СКРОЛА
-// 49:15
+// 49:40
+const scrillDiv = document.getElementById('scroll')
+
+window.addEventListener('scroll', (e) => {
+  // scrollX - актуально, pageXOffset - застарілий
+  // scrollY - актуально, pageYOffset - застарілий
+
+  scrillDiv.innerHTML = `Скрол по у: ${scrollX} та по у: ${scrollY}`
+})
+
+// прибрати прокрутку немає можливості (event.preventDefault())
+// але на подіях які визивають проктуруку можна заборонити, на події keyDown - pageUp, pageDown
+// Варіантів ініціадлізації прокручування багато, самий надійний це властивість CSS: overflow: hidden
+
+// 52.19
+// IntersectionObserver - асинхронно слідкує за тип як елементи находять або перетинаються з його бітьківськмими елементами чи областю видимістю документа.
+
+// ПОДІЯ ЗАВАНТАЖЕННЯ СТОРІНКИ //
+
+// DOMContentLoaded - завантажений HTML та побудовний DOM, але зображення та стилі ще можуть бути не завантажені.
+// load - завантажив HTML та всі зовнішні ресурси
+// beforeunload / unload - користувач хоче покинути сторінку / вже пішов зі сторіки
+
+// Стан завантаження, три варіанти:
+// loading - документ завантажується...
+// interactive - долкумент прочитаний...
+// conplete - документ прочитаний та всі ресурси також завантажені
+
+document.addEventListener('DOMContentLoaded', readyDOM) // працює на document
+window.addEventListener('load', readyLoad) // працює на window
+
+function readyDOM() {
+  console.log(`Стан завантаження: ${document.readyState}`)
+}
+function readyLoad() {
+  console.log(`Стан завантаження: ${document.readyState}`)
+}
+
+// beforeunload
+window.addEventListener('beforeunload', readyNameFunction)
+
+function readyNameFunction(e) {
+  // відмінити бії браузера за умовчанням
+  e.preventDefault()
+  // Браузер Хром вимагає встановлення значення яке повертається
+  e.returnValue = ''
+}
+
+// unload
+window.addEventListener('unload', (e) => {
+  // Користувач вже пішов, але ми ще можемо щось виконати в фоновому режимі
+  // відправка статистика і типу того.
+  // navigator.sendBeacon(url, data) ... щось типу цього
+})
+
+// ПОДІЇ ФОРМ //
+// В окремому випуску
