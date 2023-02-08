@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title></title>
-  </head>
-
-  <body>
-    <script>
-            // ОБ'ЄКТИ
+// ОБ'ЄКТИ
             // всі сущності в JS  - це об'єкти
             // Об'єкт - набір властивостей "ім'я: значення"
             // Це - тип значень, це тип змінних
@@ -201,6 +191,3 @@
 
         return sum
       }
-    </script>
-  </body>
-</html>
