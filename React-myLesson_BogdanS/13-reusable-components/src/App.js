@@ -1,16 +1,17 @@
 import './App.css'
-
-function MyComponent() {
-  return (
-    <div>
-      <h1>Hello from the reusable components</h1>
-      <button>Like!</button>
-    </div>
-  )
-}
+import MyComponent from './components/MyComponent'
+import OtherComponent from './components/OtherComponent'
 
 function App() {
-  return <div className="App"></div>
+  return (
+    <div className="App">
+      <MyComponent />
+      <OtherComponent />
+      <MyComponent />
+      <OtherComponent />
+      <MyComponent />
+    </div>
+  )
 }
 
 export default App
