@@ -1,12 +1,7 @@
 import './App.css'
-import RandomNamber from './components/RandomNamber'
 
 function App() {
-  return (
-    <div className="App">
-      <RandomNamber />
-    </div>
-  )
+  return <div className="App">100</div>
 }
 
 export default App
