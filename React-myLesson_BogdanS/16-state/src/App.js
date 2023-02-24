@@ -1,10 +1,12 @@
 import './App.css'
 import RandomNumber from './components/RandomNumber'
 
+// Проект зі зміною стану коспонента, а також передача властивості
+
 function App() {
   return (
     <div className="App">
-      <RandomNumber />
+      <RandomNumber maxNum={1000} />
     </div>
   )
 }

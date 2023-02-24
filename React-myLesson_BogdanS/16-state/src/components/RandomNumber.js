@@ -1,18 +1,16 @@
 import { useState } from 'react'
+import generateRandomName from '../utils/generateRandomName'
 
-function generateRandomName() {
-  return Math.floor(Math.random() * 100)
-  // Math.random() - генерація числа від 0 до 1
-  // х 100 - щаб отримати ціле число
-  // Math.floor() - округлити його
-}
-
-function RandomNumber() {
-  const [randomNum, setRandomNum] = useState(generateRandomName())
+function RandomNumber(props) {
+  const { maxNum } = props
+  const [randomNum, setRandomNum] = useState(generateRandomName(maxNum))
+  const changeRandomNum = () => {
+    setRandomNum(generateRandomName(maxNum))
+  }
   return (
     <div>
       <h1>{randomNum}</h1>
-      <button onClick={}>Generate new random number</button>
+      <button onClick={changeRandomNum}>Generate new random number</button>
     </div>
   )
 }
@@ -30,3 +28,18 @@ export default RandomNumber
 // Наступний крок, створимо саму фуекцію генерування випадкового числа, це generateRandomName()
 // Наступний крок, це додати функцію події кліка, onClick={},звертіть увагу, onClick пишеться в кемелКейс стилі, так це властивості компонета реакт, а div, h1, button - це компонети!!!
 
+// useState - надає механізм зміни компонента, це робиться в даному випадку через визов функції setRandomNum
+// Отже, при кліку ми передаємо назву функції changeRandomNum, через onClick={changeRandomNum}, звеніть увагу щоб без дужок і в фігурних дужках
+// Ця функція визиває setRandomNum() в Реакт хуку useState, а воні в свою чергу генерує число через функцію generateRandomName()
+
+// RandomNumber - це функція з бобочними ефектами, так як ми визиваємо і ній ще одну функцію яка вертає масив
+// Також, зверніть увагу, що змінні об'явлені за допомогою const, але так як Реакт визива. цю функцію багатократно, все новий раз, тому може зиінювати стан. Виходить ми змінюємо компонент Реакт через зовнішню функцію.
+
+// Так як цей компонент має містити тільки свою функцію, то generateRandomName() потрібно перемістити і інший файл, тобто модуль, що ми і зродили: створили папку utils, в ній файл та export, а тут import
+
+// Наступний крок, це переждати обмеження максимального часла генерація через властивість
+// Додали докоспонента App: maxNum={1000}
+// Тут ми прийняли об'єкт props
+// Зробили деструктуризацію props: const { maxNum } = props
+// Передали maxNum: generateRandomName(maxNum)
+// Викорситали maxNum в generateRandomName(): return Math.floor(Math.random() * maxNum)
