@@ -12,14 +12,26 @@ function App() {
   }
   // console.log(count) // на цьому єтапі ВЖЕ НОВЕ значення, це говорить про те, що ОНОВЛЕННЯ ВІДБУВАЮТЬСЯ АСИНХРОННО
 
+  const texts = ['Click me', 'Click me please', 'Hit me', 'Press me']
+
   return (
     <div className="App">
       <Counter count={count} />
       {/* <Button count={count} onClickFunction={setCount} /> було */}
+      {/* Цей код ми переробили на перебор методом map/. Спочатку винесли всі Button в масив texts, далі визвали texts.map(), а в Button.js додали в аргументи text та в код {text}.
+      Але в консолі а нас: Warning: Each child in a list should have a unique "key" prop.
+      Тому потрібно вказати ключ key, тому длодали другий аргумент до методжа map - index, а також додали key={index} в Button. Наскільки я зрозумів, key для віртуального дом.
+
       <Button onClickFunction={incrementCount} />
       <Button onClickFunction={incrementCount} />
       <Button onClickFunction={incrementCount} />
-      <Button onClickFunction={incrementCount} />
+      <Button onClickFunction={incrementCount} /> */}
+      {texts.map((text, index) => {
+        console.log(index)
+        return (
+          <Button onClickFunction={incrementCount} text={text} key={index} />
+        )
+      })}
     </div>
   )
 }

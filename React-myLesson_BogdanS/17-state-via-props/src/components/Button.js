@@ -1,5 +1,5 @@
-function Button({ onClickFunction }) {
-  return <button onClick={onClickFunction}>Click me!</button>
+function Button({ onClickFunction, text }) {
+  return <button onClick={onClickFunction}>{text}</button>
 }
 
 export default Button
