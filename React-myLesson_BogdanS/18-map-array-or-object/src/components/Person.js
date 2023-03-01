@@ -1,7 +1,7 @@
 function Person(props) {
   const { id, firstName, lastName, email, img } = props
   return (
-    <div>
+    <div className="card">
       <img src={img} />
       <h3>
         {firstName} {lastName}

@@ -3,7 +3,7 @@ import persons from '../data/persons' // ім'я persons може бути ін�
 
 function Persons() {
   return (
-    <div className="personsBox">
+    <div className="cards">
       {persons.map((person) => {
         return <Person key={person.id} {...person} />
       })}
