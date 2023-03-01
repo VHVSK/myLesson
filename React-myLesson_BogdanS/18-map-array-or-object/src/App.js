@@ -1,13 +1,10 @@
 import './App.css'
-import Person from './components/Person'
-import persons from './data/persons' // ім'я persons може бути іншим
+import Persons from './components/Persons'
 
 function App() {
   return (
     <div className="App">
-      {persons.map((person) => {
-        return <Person key={person.id} {...person} />
-      })}
+      <Persons />
     </div>
   )
 }
