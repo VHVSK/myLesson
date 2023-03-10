@@ -1,0 +1,17 @@
+/* Буде доданий унікальний суфікс, щоб стилі не повторювалися. Доступ до них */
+.info {
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 40%;
+}
+
+.myOtherButton {
+    background-color: coral;
+}
+
+/* Буде видно глобально */
+h2 {
+    color: blue;
+}
