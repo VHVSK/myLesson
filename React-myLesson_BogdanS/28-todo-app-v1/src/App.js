@@ -4,8 +4,11 @@ import TodoForm from './components/Todos/TodoForm'
 import TodoList from './components/Todos/TodoList'
 
 function App() {
+  // Масив строк
   const [todos, setTodos] = useState([])
+  // Додавати нову строку
   const addTodoHandler = (text) => {
+    // Розділити та додати новий елемент
     setTodos([...todos, text])
   }
 
