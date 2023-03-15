@@ -8,7 +8,6 @@ function Todo({ todo, deleteTodo, toggleTodo }) {
       className={`${styles.todo} ${
         todo.isCompleted ? styles.completedTodo : ''
       }`}
-      onDoubleClick={() => deleteTodo(todo.id)}
     >
       <RiTodoFill className={styles.todoIcon} />
       <div className={styles.todoText}>{todo.text}</div>
