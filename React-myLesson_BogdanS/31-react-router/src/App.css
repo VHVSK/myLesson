@@ -2,9 +2,23 @@
   text-align: center;
 }
 
+.active {
+  color: yellow;
+  text-decoration: none;
+}
+
 a {
   color: lightblue;
   font-size: 30px;
+}
+
+nav a {
+  margin: 15px;
+}
+
+nav {
+  background-color: darkslategray;
+  padding: 15px;
 }
 
 h1 {
