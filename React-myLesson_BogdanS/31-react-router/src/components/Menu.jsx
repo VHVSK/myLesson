@@ -9,6 +9,7 @@ const Menu = () => {
       <NavLink to="/">Home</NavLink>
       Тепер у нас не абсолютні посилання, а відносні */}
       <NavLink to="about">About</NavLink>
+      <NavLink to="courses">Courses</NavLink>
       <NavLink to="contacts">Contacts</NavLink>
       {/* а Замінили на компонент
        <a href="/">Go to home</a> */}
