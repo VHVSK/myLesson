@@ -17,6 +17,8 @@ const SingleCourse = () => {
    */
 
   console.log(location)
+  // В цьому курсі ми його не використовуємо
+
   const course = courses.find((course) => course.slug === params.courseSlug)
   // console.log(params)
 
