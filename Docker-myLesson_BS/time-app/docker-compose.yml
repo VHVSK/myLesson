@@ -1,0 +1,73 @@
+version: '3'
+services:
+  # створення власних образів на такому то мапінгу портів
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - '3000:3000'
+  api:
+    build: ./api
+    restart: always
+    ports:
+      - '5555:5000'
+
+    # замінили:
+    # depends_on:
+    #   - mysql
+
+    # на:
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # завантаження офіційних сервісів, мапінгу портів для mysql не буде, так як доступ ззовні не потрібний
+  mysql:
+    image: mysql
+    restart: always
+    # Додавання змінних середовища
+    # Можна додавати як список так і словник
+
+    # Це словник -
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: time_db
+    # Цей запис не спрацював
+
+    # Це список -
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=password
+    #   - MYSQL_DATABASE=time_db
+
+    # Додали для вирішення помилки:
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 20s
+      retries: 10
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8080'
+
+      # Додавання змінних середовища
+      # Подивимося де ми будемо подклюватися та стоврювати БД
+      # У файлі api/src/utils/mysqlPool.mjs
+      # Данні підключення в змінній pool
+      # А стоврення якщо її немає в CREATE_TIMES_TABLE_SQL
+      # Збергіти концеденційну інформацію в файлах не бажано, як в pool, краще задвати змінну середовища
+      # пізніше ми перепишемо це.
+
+      # Все готово для запуска!
+
+      # пізніше ми помятили помилку підключення, не була створена БД так як БД була не готовар ще, тому ми додали до всіх сервсів:
+
+      # restart: always
+
+      # А також в файлі package.json додали опцію --exitcrash
+      # "dev": "nodemon --exitcrash index.mjs"
+
+      # А також ми додали до сервісу api, яка вказує на залежність, і стоврення контейнера для сервісу api відбудеться тільки після створення контенера mysql
+      # depends_on:
+      #  - mysql

@@ -56,7 +56,7 @@
  * Аналогічний запит на потрібно буде виконати при запуску в контейнері длокер, тільки через інструкції Dockerfile
  */
 
-// ! Запуск фронтенда в контейнері Docker
+// ! Запуск фронтенда в контейнері Docker та створення Dockerfile
 /**
  * Для запуска ми переходимо в папку frontend
  * Стоврюємо файл Dockerfile та заповнюємо його, пояснення там
@@ -96,5 +96,197 @@
  * Поветаємося в попередню вкладку:
  * * Ctrl + C
  * * docker ps -a
- * бачиом контейнер бів ствропний на основі образа time-app-frontend, статус Exited
+ * бачиом контейнер був створений на основі образа time-app-frontend, статус Exited
  */
+
+// ! Запуск бекенда в контейнері Docker та створення Dockerfile
+/**
+ * По аналогії створюємо Dockerfile
+ * Розмістити в папці app
+ * Тільки порт 5000
+ * Аналогічно коментарі в Dockerfile
+ * Аналогічно прикладу вище:
+ * * docker build . -t time-app-backend
+ *  => => naming to docker.io/library/time-app-backend
+ * * docker images
+ * time-app-backend         latest    fc3bf61db4b1   About a minute ago   188MB
+ * * docker run -p 5000:5000 time-app-backend
+ * Express web server is running at http://localhost:5000
+ *
+ *
+ */
+
+// також, копіювати файли Dockerfile в образи немає сенсу, тому можна створити файл .Dockerignore і той перелік не буде копіюватися
+
+// ! Створення yml файла docker-compose.yml
+// В корні папки time-app створимо docker-compose.yml
+// В фійлі 4 сервіса, ми пропишемо шлях до наших двух докерфайлів для створення власних образів, а для БД та керування БД ми завантажмо офіційні з Докер Хаб
+//  Деталі  в цьому файлі.
+// Також ми розглянуди що таке Змінні середовища, на прикладі для mysql
+// Розгялнемо змінні середовища та запустимо наш yml файл
+
+// ! Змінні середовища
+// Ввідні параменти для додатків, паролі та інші данні для процесів та контейнерів, параметри доступів і т.п.
+// Відкрити термінал
+// Опція змінної середовища -e MY_ENV_VARIABLE
+// * docker run -d -e MY_ENV_VARIABLE=test nginx
+// c8645bdfe72bef...
+// * docker ps
+// c8645bdfe72b
+// * docker exec -it c8645bdfe72b sh
+// Ми в оболочці #
+// * printenv
+/**
+ * HOSTNAME=c8645bdfe72b
+    HOME=/root
+    PKG_RELEASE=1~bullseye
+    TERM=xterm
+    NGINX_VERSION=1.23.3
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    NJS_VERSION=0.7.9
+    MY_ENV_VARIABLE=test
+    PWD=/
+ */
+
+// * exit
+// * docker stop c8645bdfe72b
+
+// ! Запуск yml файла docker-compose.yml
+// Відкрити термінал
+// Перейти в напку time-app
+// * docker-compose up
+// Відбувається процес завантаження
+// Відкрити новий термінал
+// * docker ps
+// Бачимо 4 робочих контейнера
+/**
+ *     STATUS         PORTS                    NAMES
+    b4759151a8f3   mysql               "docker-entrypoint.s…"   8 minutes ago   Up 8 minutes   3306/tcp, 33060/tcp      time-app-mysql-1
+    b60ad21f2ef1   time-app-api        "docker-entrypoint.s…"   8 minutes ago   Up 8 minutes   0.0.0.0:5555->5000/tcp   time-app-api-1
+    4eeb364d5064   adminer             "entrypoint.sh php -…"   8 minutes ago   Up 8 minutes   0.0.0.0:8888->8080/tcp   time-app-adminer-1
+    69b41d982303   time-app-frontend   "docker-entrypoint.s…"   8 minutes ago   Up 8 minutes   0.0.0.0:3333->3000/tcp   time-app-frontend-1
+    PS C:\OpenServer\domains\myLesson> 
+ */
+
+// ! Запуск нашого веб-додатка
+// Відйкрити в браузері
+// http://localhost:3333/
+
+// -
+// ---
+// -----
+
+// Але маємо помилки, проюлема підключення фронтенд до бекеднда:
+// GET http://localhost:5555/times net::ERR_EMPTY_RESPONSE
+// Uncaught (in promise) TypeError: Failed to fetch
+
+// Давайте подивимося логи контейнера:
+// ...
+// time-app-api-1       |   sqlMessage: "Table 'time_db.times' doesn't exis
+// ...
+// time-app-api-1       | [nodemon] app crashed - waiting for file changes before starting...
+
+// Немає таблиці...
+// Виявляється, що під час підключення при створенні БД ще не була готова, відповідно  ми отримали помилку та і таблиця не стоврилася
+
+// ! Щоб вирішити це питання, цю помилку, давайте модифікуємо docker-compose.yml
+// Ми змінимо запуск додатка node.js з використанням nodemon
+// Ми додамол опцію яка буде завершувати процес nodemon якщо десь в додатку node.js буде помилка.
+// Давайте додамо до docker-compose.yml опцію рестарт якщо процес завершився.
+// таким чином, якщо буде помилка конетйнер з з бекдодатком перезапуститься, а нас зараз цікавить модифікація запуска nodemon сервісу.
+// Перейти в /api/package.json
+// Змінимо: "dev": "nodemon index.mjs"
+// На: "dev": "nodemon --exitcrash index.mjs"
+
+// А також додамо в наш docker-compose.yml:
+// Додати до всіх сервісів:
+// restart: always
+
+// А також ми додали до сервісу api, яка вказує на залежність, і стоврення контейнера для сервісу api відбудеться тільки після створення контенера mysql
+// depends_on:
+//   - mysql
+
+// ! Перестворити образи після коригування, виправлення помилок
+// Зупинити працюючі:
+// * Ctrl + C
+// * docker-compose down
+// * docker ps -a
+
+// Тепер можна виконати стоврення нових образів:
+// * docker-compose up --build
+
+// ! ПОМИЛКУ НЕ ВИПРАВИЛИ
+// ! ВИРІШЕННЯ, остаточний варіант
+// В файлі Error_connect_MySql.docx прописане вирішення цього питання.
+
+// в docker-compose.yml дописати:
+/***
+ * healthcheck:
+  test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+  timeout: 20s
+  retries: 10
+ */
+
+// заманити:
+// depends_on:
+//   -mysql
+// на:
+// depends_on:
+//   mysql:
+//     condition: service_healthy
+
+// Зупинити всі контенери:
+// * docker-compose down
+
+// Запустити знову
+// * docker-compose up -d
+
+// Дочекатися поки закінчиться режтим Waiting на Healthy
+// Container time-app-mysql-1     Healthy
+
+// І все працює: http://localhost:3333/
+// Як виявилося ще ні, нижче рішення:
+
+// ! Пояснення причини помилки
+/**
+ * Проблема в вебсокетах, так як ми запустили додаток на різних портах 3333:3000, виявляється, що якщо внутрішній порт відрізняється від зовнішнього, по з'єднання веб сокетів не буде встановлене.
+ * А вебсокети тут використовуються тому що фронтенд працює в режимі розробки - працює функція hotreload, якби були в прокнш версії де тільки статичні файли, такої помилки не було би.
+ */
+
+// ! Інший спосів вирішення помилки:
+// Замінити порти на однакові:
+// 3333:3000 на 3000:3000
+
+// !! ВСЕЖ ТАКИ МИ ЗАМІНИЛИ ПОРТИ НА ОДНАКОВІ:
+// 3000:3000
+
+// І все працює: http://localhost:3000/
+// Працює добре!
+// Відкриємо інструменти розробника, вкладна Мережа, всі, знайти times далі вкладка headers та preview:
+
+// Request URL: http://localhost:5555/times
+
+/**
+ * [{id: 3, time: "23:28:19", created_at: "2023-03-31T20:28:20.000Z"},…]
+0
+: 
+{id: 3, time: "23:28:19", created_at: "2023-03-31T20:28:20.000Z"}
+1
+: 
+{id: 4, time: "23:28:20", created_at: "2023-03-31T20:28:20.000Z"}
+2
+: 
+{id: 1, time: "23:28:18", created_at: "2023-03-31T20:28:19.000Z"}
+3
+: 
+{id: 2, time: "23:28:19", created_at: "2023-03-31T20:28:19.000Z"}
+ */
+
+// ! Ще варінат:
+// У файлі vite.config.js на якому порті ми хочемо підняти сервер для розродкт, для цього прописати після resolve {}
+// serser: { host: true, port: 3333 }
+// В мене цей спосіб не вирішив питання, додаток працює але весь час перезавантажується кожні 3-5 секунд!
+
+// -----
+// ---
+// -
