@@ -15,4 +15,10 @@ export default defineConfig({
   //   host: true,
   //   port: 3333,
   // },
+  // Наступну секцію додали, щоб працювала функція hot reload
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
 })
