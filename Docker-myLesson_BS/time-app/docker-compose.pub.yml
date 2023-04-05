@@ -1,0 +1,110 @@
+version: '3'
+services:
+  # створення власних образів на такому то мапінгу портів
+  frontend:
+    # build: ./frontend
+    # замість build - image
+    image: vyhivskyi/time-app-frontend-dev
+    restart: always
+    ports:
+      - '3000:3000'
+    # volumes:
+    #   - /app/node_modules
+    #   - ./frontend:/app
+  api:
+    # build: ./api
+    # аналогічно, замість build - image
+    image: vyhivskyi/time-app-api-dev
+    restart: always
+    ports:
+      - '5555:5000'
+    # volumes:
+    #   - /app/node_modules
+    #   - ./api:/app
+    # volumes длодали, щоб в процесі розробки докер брав файли з нашого компютера, а модулі з контейнера
+    # Цей мепінг для контейнерів!
+    # Він працює в режимі реального часу, зміни будуть відображатися в процесах в контенерах
+
+    # замінили:
+    # depends_on:
+    #   - mysql
+
+    # на:
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PORT: '3306'
+      MYSQL_PASSWORD: password
+      MYSQL_DB: time_db
+
+  # завантаження офіційних сервісів, мапінгу портів для mysql не буде, так як доступ ззовні не потрібний
+  mysql:
+    image: mysql
+    restart: always
+    # Додавання змінних середовища
+    # Можна додавати як список так і словник
+
+    # Це словник -
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: time_db
+    # Цей запис не спрацював
+
+    # Це список -
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=password
+    #   - MYSQL_DATABASE=time_db
+
+    # Доповнення до volumes: нижче по документу:
+    # Додадомо мепінг томів
+    volumes:
+      - mysql_data_pub:/var/lib/mysql
+    # volumes: - це ключ, його значення список
+    # Mysql збергає свої данні в папці /var/lib/mysql, це папака в середині контейнера і це абсолютний шлях до цієї папки.
+    # Також, тут вказується просто назвап mysql_data, без ./, а якщо в казати ./mysql_data - то значитть на нашому компютері, а не в самому докері.
+    # ! Ми можемо аналогічним шляхом зробити мепінг, тобто замінити сміст цієї папки і зробити мепінг до зовнішньої папки - і ось назва цієї папки mysql_data, так як вказано нижче в документі. Ця подія, цей обмін двухсторонній, в читання і запис.
+    # Тобто, контейнер буде думати що зберагє данні в /var/lib/mysql, а по факту в mysql_data
+
+    # Додали для вирішення помилки:
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 20s
+      retries: 10
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8080'
+
+      # Додавання змінних середовища
+      # Подивимося де ми будемо подклюватися та стоврювати БД
+      # У файлі api/src/utils/mysqlPool.mjs
+      # Данні підключення в змінній pool
+      # А стоврення якщо її немає в CREATE_TIMES_TABLE_SQL
+      # Збергіти концеденційну інформацію в файлах не бажано, як в pool, краще задвати змінну середовища
+      # пізніше ми перепишемо це.
+
+      # Все готово для запуска!
+
+      # пізніше ми помятили помилку підключення, не була створена БД так як БД була не готовар ще, тому ми додали до всіх сервсів:
+
+      # restart: always
+
+      # А також в файлі package.json додали опцію --exitcrash
+      # "dev": "nodemon --exitcrash index.mjs"
+
+      # А також ми додали до сервісу api, яка вказує на залежність, і стоврення контейнера для сервісу api відбудеться тільки після створення контенера mysql
+      # depends_on:
+      #  - mysql
+
+# Щоб додати том в самрму докері, для зберігання БД
+# Додатвати на такому самрму рівні як services
+volumes:
+  mysql_data_pub:
+# ця інструкція стоврить том mysql_data в середині докера
+#   mysql_data: - це назва тома, не забуваємо додавати :
+# Тепер піднятися више та прописати volumes: в розділі mysql
