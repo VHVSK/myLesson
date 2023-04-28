@@ -35,7 +35,7 @@ export default App
 
 // Так, щоб відслідковувати роутинг потрібна саме така ієрархія: BrowserRouter > div > Routes > Route
 
-// Щоб на кожній сторінці відображалося меню, потрібно Route MainLayout вкласти інші сторінки, а в самій MainLayout прописати <Outlet />
+// Щоб на кожній сторінці відображалося меню, потрібно в Route MainLayout вкласти інші сторінки, а в самій MainLayout прописати <Outlet />
 
 // Щоб показати головну сторінку:
 // <Route index element={<Home />} />
@@ -51,3 +51,7 @@ export default App
 
 // <Route path="courses/:courseSlug/:lang" element={<SingleCourse />} />
 // :courseSlug, :lang - це параметри в шляху, в подальшому ми зможемо отримати об'єкт з цими параметрами
+
+// <Outlet /> в layouts/MainLayout.jsx
+// Саме <Outlet /> забезпечує показ інших сторінок, які знаходяться в дочірньому:
+// <Route path="/" element={<MainLayout />}></Route>

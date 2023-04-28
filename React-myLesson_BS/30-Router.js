@@ -54,4 +54,5 @@
 
 // Відкриємо на сайті:
 // https://www.npmjs.com/package/react-router-dom
+// * npm i react-router-dom
 // https://www.npmjs.com/package/react-router-native - для розробки мобільних додатків

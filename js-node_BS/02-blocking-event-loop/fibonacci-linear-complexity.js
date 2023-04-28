@@ -1,27 +1,36 @@
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+// 0, 1, 2, 3, 4, 5, 6, 7,   8,  9, 10 - індекс
+
+// В цьому варіанти ми використаємо підхід пошуку не спадаючій, а в зростаючій послідовності!
+// Взагалі без промісів!
+// Навіть немає рекурсії!
+// Але це синхронна функція, вона виконується в основоному потоці, тому інші події очікували завершення!
+
+// Висновок: якщо в нас оптимізовний код і додаток не високонавантажений, то 7 мс блокування основногопотоку не сильно проблематично і тому немає сенсу переходити на проміси.
+
 function info(text) {
-    console.log(text, performance.now().toFixed(2));
+  console.log(text, performance.now().toFixed(2))
 }
 
-info('Program start');
+info('Program start')
 
-setTimeout(() => info('Timeout'), 0);
+setTimeout(() => info('Timeout'), 0)
 
 function fib(n) {
-    if (n === 0 || n === 1) {
-        return n;
-    }
-    let fib1 = 0;
-    let fib2 = 1;
-    let sum;
-    for (let i = 1; i < n; i++) {
-        sum = fib1 + fib2;
-        fib1 = fib2;
-        fib2 = sum;
-    }
-    return sum;
+  if (n === 0 || n === 1) {
+    return n
+  }
+  let fib1 = 0
+  let fib2 = 1
+  let sum
+  for (let i = 1; i < n; i++) {
+    sum = fib1 + fib2
+    fib1 = fib2
+    fib2 = sum
+  }
+  return sum
 }
 
-console.log(fib(100000));
+console.log(fib(100000))
 
-info('Program end');
+info('Program end')
