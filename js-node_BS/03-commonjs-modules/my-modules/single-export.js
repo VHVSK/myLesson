@@ -1,11 +1,13 @@
 function greeting(name) {
-    console.log('Hello', name);
+  console.log('Hello', name)
 }
 
 // console.log(__filename);
 
-module.exports = greeting;
+// Якщо нам потрібно експортувати тільки одне значення
+module.exports = greeting
 
-// // DON'T DO THIS!
-// // module.exports remains {}
+// При цьому не робіть так як нижче:
+// DON'T DO THIS!
+// module.exports remains {}
 // exports = greeting;

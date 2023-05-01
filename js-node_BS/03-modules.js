@@ -123,7 +123,7 @@ const fs = require('fs')
 // Перед використанням зовнішніх модулей, їх потрібно встановити за допомогою:
 // * npm install
 
-// ! Імпорт єдиного експорта, єдиного!
+// ! Імпорт ОДНОГО ЕКСПОРТА, єдиного!
 // Наприклад в нас є файл:
 // users.js
 const users = ['Bogdan', 'Alice', 'Bob']
@@ -133,3 +133,46 @@ module.exports = users
 // Щоб використати цю змінну в іншому файлі, напр.в:
 // index.js
 const usersArray = require('./users.js')
+
+// ! Імпорт з модуля ДЕКІЛЬКІ ЗМІННИХ
+// Наприклад в нас є файл в якому прописуємо константи:
+// contacts.js
+const URL = 'http://localhost'
+const USERNAME = 'admin'
+const PASSWORD = 'strong_pass'
+
+module.exports.URL = URL
+module.exports.USERNAME = USERNAME
+module.exports.PASSWORD = PASSWORD
+
+// Також, можна через exports, так як exports це аліас module.exports:
+// exports.URL = URL
+// exports.USERNAME = USERNAME
+// exports.PASSWORD = PASSWORD
+
+// Щоб використати ці змінні в іншому файлі, виконаємо деструктуризацію об'єкта, напр.в:
+// index.js
+const { URL, USERNAME, PASSWORD } = require('./contacts.js')
+// Другий варіант, присвоїти вмінній, тобто буде об'єкт данних, тоді буде доступ зо зманної типу CONSTANS.URL
+// * const CONSTANS = require('./contacts.js')
+// Третій варіант, вибірковий:
+// * const { URL } = require('./contacts.js')
+
+// ! ІМПОРТ ФУНКЦІЙ
+// Функція яка повертає данні з певрного url
+// наприклад, маємо index.js
+const getData = require('./utils')
+
+getData('https://jsonplaceholder.typicode.com/posts')
+  .then((posts) => console.log(posts))
+  .catch((error) => console.log(error))
+
+// and utils.js
+async function getData(url) {
+  const res = await fetch(url)
+  const data = await res.json()
+  return data
+}
+
+// В даному варінаті назва не обов'язкова
+module.exports = getData

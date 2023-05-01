@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmoothScroll</title>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        background-color: rgba(128, 128, 128, 0.5);
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+      }
+      main div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid red;
+        height: 700px;
+        padding: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a data-scroll href="#bazinga">Link</a>
+      <a data-scroll href="#bazinga2">Link2</a>
+      <a data-scroll href="#bazinga3">Link3</a>
+      <a data-scroll href="#bazinga4">Link4</a>
+    </header>
+    <main>
+      <div id="bazinga">
+        <h1>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque neque
+          reiciendis quis iure sed. Autem officiis tempore possimus accusamus
+          earum?
+        </h1>
+        <a href="https://github.com/cferdinandi/smooth-scroll"
+          >https://github.com/cferdinandi/smooth-scroll</a
+        >
+      </div>
+      <div id="bazinga2">
+        <h1>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga
+          voluptatibus delectus porro enim molestiae quibusdam a? Sint, nulla
+          molestiae iure consectetur eius temporibus mollitia amet sed maxime
+          voluptate, iste quibusdam!
+        </h1>
+      </div>
+      <div id="bazinga3">
+        <h1>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+          tenetur id, voluptatibus enim molestiae provident?
+        </h1>
+      </div>
+      <div id="bazinga4">
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          suscipit quasi harum, perferendis maxime dolores.
+        </h1>
+      </div>
+    </main>
+
+    <script>
+      var scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 500, // швидкість вашої анімації
+        speedAsDuration: true, // щоб усі ваші анімації займали однакову кількість часу
+        // https://github.com/cferdinandi/smooth-scroll
+      })
+    </script>
+  </body>
+</html>
