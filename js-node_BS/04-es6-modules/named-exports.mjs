@@ -1,4 +1,7 @@
-const season = 'spring';
-const temperature = 13;
+const season = 'spring'
+const temperature = 13
 
-export { season, temperature };
+console.log('Виконується весь файл при такому експорті!')
+
+// Два іменованих експорта
+export { season, temperature }
