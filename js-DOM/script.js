@@ -7,9 +7,9 @@
 //    history - позволяє оримати історію та переходити по ній, наприклоад history.back(), history.forward()
 // 3. javascript: Object, Array, function and ...
 
-// ПОШУК ТА НІВІГАЦІЯ ПО ДОМ //
+// ! ПОШУК ТА НІВІГАЦІЯ ПО ДОМ //
 
-// ALERTS
+// ! ALERTS
 // Щоб щось вивести - потріно відкрити консоль браузера
 
 // Також, взіємодія з користувачем, виводять діалогові вікна
@@ -18,14 +18,14 @@ alert('Hello')
 const confirmUser = confirm('Do you speak English?')
 const promtUser = promt('What you name?')
 
-// DOCUMENT
+// ! DOCUMENT
 // html теги показіні у вигляді дерева DOM
 // основою звернення э document, наприклад:
 const htmlElem = document.documentElement
 headElem = document.head
 bodyElem = document.body
 
-// NEXT, LAST, CHILD, PREV
+// ! NEXT, LAST, CHILD, PREV
 // Перший та останній елемент у вибраного елемента
 const bodyElem = document.body
 const firstBodyElem = bodyElem.firstChild // по суті ми отримаємо перенос строкиЮ бо це є перший узел в дочерньому вибраного body
@@ -50,7 +50,7 @@ bodyElemnt.previousElementSibling
 bodyElemnt.nextElementSibling
 bodyElemnt.parentElement
 
-// QUERYSELECTOR - шакає та повертає елементи по селектору CSS всередині елемента
+// ! QUERYSELECTOR - шакає та повертає елементи по селектору CSS всередині елемента
 // це не масив, це колекція
 // повертає статичну колекції, якщо додати елементи скриптом, вони не будуть їх містити
 document.querySelectorAll
@@ -85,7 +85,7 @@ const elementsClassLi = document.querySelectorAll('.classLi')
 const subItems = elementsClassLi[0].querySelectorAll('li')
 console.log(subItems)
 
-// GETELEMENTBYID
+// ! GETELEMENTBYID
 // пошук по його id
 // id унікальгний та пошук більки в середині document
 // писати # не потрібно
@@ -118,7 +118,7 @@ for (let elem of elemMatches) {
 const text = document.querySelector('.myText')
 const list = text.nextElementSibling
 
-// РЕДАГУВАТИ СТВОРЮВАТИ та ДОДАВАТИ СВІЙ КОД //
+// ! РЕДАГУВАТИ СТВОРЮВАТИ та ДОДАВАТИ СВІЙ КОД //
 // Редагувати об'єкт
 // Спочатку вибрати об'єкт
 const text2 = document.querySelector('.myText')
@@ -174,7 +174,7 @@ const title = document.querySelector('.h3')
 // щоб перенести title в конець блоки lessonBlock
 lessonBlock.append(title)
 
-// КЛОНУВАННЯ ОБ'ЄКТА
+// ! КЛОНУВАННЯ ОБ'ЄКТА
 const lessonElement = document.querySelector('.lessonElement')
 // клонування без дочерніх елементів
 constClone1 = lessonElement.cloneNode()
@@ -184,7 +184,7 @@ constClone2 = lessonElement.cloneNode(true)
 const lessonBlock2 = document.querySelector('.lesson')
 lessonBlock2.append(constClone1) // or constClone2
 
-// ВИДАЛИТИ ОБ'ЄКТ з DOM
+// ! ВИДАЛИТИ ОБ'ЄКТ з DOM
 const lessonElement3 = document.querySelector('.lessonElement')
 lessonElement3.remove()
 
@@ -205,7 +205,7 @@ for (let value of elementClass.classList) {
   console.log(value) // перебере всі класти які є в елеммента
 }
 
-// КЕРУВАННЯ СТИЛЯМИ
+// ! КЕРУВАННЯ СТИЛЯМИ
 const elementSt = document.querySelector('.lessonElement')
 elementSt.style.color = 'red' // задали стиль за допомогою css властивістю
 elementSt.style.marginLeft = '10px' // не забуваємо про одиниці виміоу
@@ -261,7 +261,7 @@ lessoAtributes.getAttribute('name') // отримати значення атр�
 lessoAtributes.setAttribute('name', 'value') // вставновити значення атрибута, увага, цей метод не змінює глобальний ДОМ
 lessoAtributes.removeAttribute('name') // виджалити атрибут
 
-// DATASET
+// ! DATASET
 // всі атрибути які починаються з префікса "data-"
 // зарезервовані для використання програмістами
 // вони доступні у властивості dataset

@@ -392,7 +392,7 @@ for (const char2 of str) {
 console.log(vowelsCount)
 console.log(vowelsCount2)
 
-// ЗАДАЧА 79, передрати масив
+// ЗАДАЧА 79, перебрати масив
 const objectWithNumbers2 = {
   a: 10,
   b: 20,
