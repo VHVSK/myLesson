@@ -109,6 +109,13 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
 // В файл index.js помістити веще наведений код
 //  В мерміналі, в node "з коробки" fetch не працює, тому потріні npn пакети.
 
+// тест при вирішені пробелми з авторизацією:
+fetch('google.accounts.id.initialize')
+  .then((response) => {
+    console.log(response)
+  })
+  .catch((error) => console.error(error))
+
 // Тому запускаємо в консолі браузера тільки частину наведеного вище коду:
 fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
   console.log(response)

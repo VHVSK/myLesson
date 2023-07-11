@@ -45,7 +45,7 @@
  *
  *
  * Радимо почати з введегння, це запуск сервера розробника:
- * *npm start
+ * * npm start
  * cd C:\OpenServer\domains\myLesson\React-myLesson_BogdanS\11-create-react-app npm start
  *
  * Happy hacking!

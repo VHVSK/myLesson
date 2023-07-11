@@ -4,7 +4,7 @@ import PetInfo from './components/PetInfo'
 // Ми підключили цей фунекціональний компонент
 // Передамо данні,
 
-function App() {
+function App({ props }) {
   return (
     <div className="App">
       <PetInfo animal="cat" age="5" />

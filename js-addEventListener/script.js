@@ -291,6 +291,11 @@ function readyLoad() {
   console.log(`Стан завантаження: ${document.readyState}`)
 }
 
+// або
+window.addEventListener('load', function (event) {
+  console.log('All resources finished loading!')
+})
+
 // beforeunload
 window.addEventListener('beforeunload', readyNameFunction)
 
