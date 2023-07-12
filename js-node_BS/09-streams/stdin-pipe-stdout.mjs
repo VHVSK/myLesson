@@ -3,6 +3,8 @@
 import { Transform } from 'stream'
 import fs from 'fs'
 
+// ! Ми можемо записувати данні в файл які користувач вводить в терміналі
+
 // Транформує поток який приходить до нього і далі передає данні в наступний потік:
 // Transform осікує опції, це об'єкт
 // upperCaseStream - повертає редаблстрим, який можна прочитати
@@ -17,6 +19,7 @@ const upperCaseStream = new Transform({
 })
 
 // Це завдання, вернути строку задом наперед
+// Переход на нову строку перенесли в кінець
 const reverseStream = new Transform({
   transform(chunk, encoding, cb) {
     const arrayOfChars = chunk.toString().split('')
@@ -26,6 +29,7 @@ const reverseStream = new Transform({
   },
 })
 
+// pipe - перенаправляю один потік в інший потік
 // upperCaseStream читає з потоку process.stdin і поверттає редаблстрим і ми можемо перенаправити (pipe) і інший потік, наприклад для запису (process.stdout)
 process.stdin.pipe(upperCaseStream).pipe(reverseStream).pipe(process.stdout)
 
