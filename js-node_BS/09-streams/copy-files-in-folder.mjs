@@ -1,41 +1,61 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'fs'
+import path from 'path'
 
-const sourceDir = './files';
-const destinationDir = './copied-files';
+// Копіювати папку з файлами і іншу папку за допогою потоків
 
+const sourceDir = './files'
+const destinationDir = './copied-files'
+
+// Якщо немає папки, вийти з програми
 if (!fs.existsSync(sourceDir)) {
-    console.warn(`Source dir ${sourceDir} doesn't exist!`);
-    console.log('Exiting...');
-    process.exit(0);
+  console.warn(`Source dir ${sourceDir} doesn't exist!`)
+  console.log('Exiting...')
+  process.exit(0) // 0 - корекстне завершення програми
 }
 
+// Якщо є така папка, то видалити якщо існує
 if (fs.existsSync(destinationDir)) {
-    fs.rmSync(destinationDir, { recursive: true });
+  //   fs.rmdirSync(destinationDir, { recursive: true, force: true })
+  //   В нових версіях:
+  fs.rmSync(destinationDir, { recursive: true })
 }
-fs.mkdirSync(destinationDir);
+// Тепер стоврити
+fs.mkdirSync(destinationDir)
 
+// Читаємо всі файли в певній папці
 fs.readdir(sourceDir, (err, fileNames) => {
-    if (err) {
-        console.log(err);
-        process.exit(1);
-    }
-    console.log('Start', performance.now());
-    fileNames.forEach((fileName, index) => {
-        const sourceFilePath = path.join(sourceDir, fileName);
-        const destinationFilePath = path.join(
-            destinationDir,
-            `${index + 1}. ${fileName}`
-        );
+  if (err) {
+    console.log(err)
+    process.exit(1) // 1 - НЕ корекстне завершення програми
+  }
 
-        const readFileStream = fs.createReadStream(sourceFilePath);
-        const writeFileStream = fs.createWriteStream(destinationFilePath);
+  // Час старту
+  console.log('Start', performance.now())
 
-        readFileStream.pipe(writeFileStream);
+  // маємо назви файлів fileNames
+  fileNames.forEach((fileName, index) => {
+    // маємо нахзву файла fileName та інтекс index
+    // шлях до цільового файлу
+    const sourceFilePath = path.join(sourceDir, fileName)
+    // Шлях куди копіюємо та назву нового файлу
+    const destinationFilePath = path.join(
+      destinationDir,
+      `${index + 1}. ${fileName}`
+    )
 
-        writeFileStream.on('finish', () => {
-            console.log(`File ${fileName} was copied`);
-        });
-    });
-    console.log('End', performance.now());
-});
+    // потоки
+    const readFileStream = fs.createReadStream(sourceFilePath)
+    const writeFileStream = fs.createWriteStream(destinationFilePath)
+
+    // виконати перенаправлення
+    readFileStream.pipe(writeFileStream)
+
+    // Фініш одного файлу
+    writeFileStream.on('finish', () => {
+      console.log(`File ${fileName} was copied`)
+    })
+  })
+
+  // Фініш!
+  console.log('End', performance.now())
+})

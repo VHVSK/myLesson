@@ -17,13 +17,13 @@ function myFunction() {
 // основний метод реагувати на подію, це методи addEventListener та removeEventListener
 const button_3 = document.querySelector('.button_3')
 button_3.addEventListener('click', function (e) {
-  alert('Клік, через функцію addEventListener')
+  alert('Клік через функцію addEventListener')
 })
 button_3.addEventListener('click', function (e) {
-  alert('Клік, через функцію addEventListener 2')
+  alert('Другий клік через функцію addEventListener')
 })
 
-// Можгна винести код функції без назви у функцію з назвою
+// Можна винести код функції без назви у функцію з назвою
 button_3.addEventListener('click', testAlert)
 
 function testAlert() {
@@ -83,7 +83,7 @@ function showConsole(event) {
   console.log(event)
 }
 
-// ! ВСПЛИВАННЯ ТА ЗАНУРЕННЯ (маєтться на увазі, подія спочатку погружається вниз слоїв, а потім піднімається вверх по слоям) //
+// ! ВСПЛИВАННЯ ТА ЗАНУРЕННЯ (маєтться на увазі, подія спочатку погружається вниз слоїв, а потім піднімається вверх по шарам) //
 // Уявімо ситуацію, коли ми маємо вкладені блоки до кожного слухаємо подію, то якшщо ми клікнемо по блоку який знаходиться вище, то в нижньому також спрацює ця подія
 // щоб зупинити спрацювання тподії на нижніх блоках:
 button_5.addEventListener('click', (event) => {
@@ -300,7 +300,7 @@ window.addEventListener('load', function (event) {
 window.addEventListener('beforeunload', readyNameFunction)
 
 function readyNameFunction(e) {
-  // відмінити бії браузера за умовчанням
+  // відмінити дії браузера за умовчанням
   e.preventDefault()
   // Браузер Хром вимагає встановлення значення яке повертається
   e.returnValue = ''
