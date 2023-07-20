@@ -7,7 +7,7 @@ const UserInfo = () => {
   // Приклад роботи по аналогії UserContext.Consumer
   // return <UserName>{(value) => <h1>{value}</h1>}</UserName>
   // 2
-  // Базовиц приклад роботи UserContext.Consumer
+  // Базовий приклад роботи UserContext.Consumer
   // return (
   //   <UserContext.Consumer>{(value) => <h1>{value}</h1>}</UserContext.Consumer>
   // )
