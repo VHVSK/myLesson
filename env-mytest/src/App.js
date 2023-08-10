@@ -1,6 +1,8 @@
 import logo from './logo.svg'
 import './App.css'
 
+// ! Також, дивіться урок node - модуль dotenv
+
 // Я описав дії в файлі .env.local
 // Також, як виводити данні з сереверу на сторінку безпечно від XSS з виристанням serialize
 
@@ -32,9 +34,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className='App'>
+      <header className='App-header'>
+        <img src={logo} className='App-logo' alt='logo' />
         <p>{MY_NOT_SECRET_CODE}</p>
         <p>{MY_NODE_ENV}</p>
         <p>{URL}</p>
