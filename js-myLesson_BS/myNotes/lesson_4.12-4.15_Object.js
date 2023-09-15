@@ -124,7 +124,7 @@ function createGreeting() {
   return { greet, changeGreeting } // обєкт з методами
 }
 
-// ЗАДАЧА 79 -перебрати властивості обєкта
+// ЗАДАЧА 79 - перебрати властивості обєкта
 const objectWithNumbers = {
   a: 10,
   b: 20,

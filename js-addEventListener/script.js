@@ -246,6 +246,14 @@ input.addEventListener('keydown', (e) => {
   }
 })
 
+// Щоб відстілкувати поєднання клавіш - зберегти
+input.addEventListener('keydown', (e) => {
+  if (e.code == 'KeyS' && (e.ctrlKey || e.metaKey)) {
+    alert('Зберігання!')
+    // e.metaKey - на Mac
+  }
+})
+
 // Відстежити якщо клавіша натиснена та не відпущення, тобтто відбувається автоповтор
 const repeatEvent = document.getElementById('repeat')
 input.addEventListener('keydown', (e) => {
