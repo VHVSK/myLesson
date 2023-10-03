@@ -17,6 +17,7 @@ function Posts() {
     // .catch((error) => console.log(error.message))
   }, [])
 
+  // Прелоадер в fetch
   // Додали індикатор завантаження, щоб реалізувати це:
   // створили const [isLoading, setIsLoading] = useState(true)
   // додали метод .finally() який визивається в любому випадку і в ній визвали setIsLoading(false)

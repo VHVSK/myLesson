@@ -22,9 +22,9 @@ asyncFn()
 // Тепер ще додамо метод
 asyncFn().then((value) => console.log(value))
 /*
-        Success!
-        Promise {<fulfilled>: undefined}
-        */
+  Success!
+  Promise {<fulfilled>: undefined}
+  */
 
 // Перепише функцію, але вже в варіаном повернення помилки
 const asyncFn = async () => {
@@ -34,12 +34,12 @@ const asyncFn = async () => {
 asyncFn()
 
 /*
-        Promise {<rejected>: Error: There was an error!
-        at asyncFn (<anonymous>:2:19)
-        at <anonymous>:4:9}
+  Promise {<rejected>: Error: There was an error!
+  at asyncFn (<anonymous>:2:19)
+  at <anonymous>:4:9}
 
-            [[PromiseState]]: "rejected" відхилений
-        */
+      [[PromiseState]]: "rejected" відхилений
+  */
 
 // Звісно, щоб піймати її нам потріно використовувати матод
 // щоб коректно опрацювати помилку

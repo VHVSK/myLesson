@@ -64,8 +64,8 @@ fetch('https://jsonplaceholder.typicode.com/todos/1')
   .catch((error) => console.error(error))
 
 // fetch - створюється проміс, fetch повертає проміс, при відправки він в стані очікування
-// пови він в очікуванні - ніякі функції .then не виконуються
-// Якщо сервер  поврне відповідь, то видветься:
+// поки він в очікуванні - ніякі функції .then не виконуються
+// Якщо сервер  поверне відповідь, то видветься:
 // .then(response => response.json())
 // Цій функції передасться відповідь
 // ми отримали відповідь та призначити response
@@ -187,11 +187,11 @@ fetch('https://jsonplaceholder.typicode.com/todos/5')
 // Яку вивели цією колбек ф-єю: .catch(error => console.error(error)), ми зловили цю помилку
 
 /*
-            Promise {<pending>}
-            GET https://jsonplaceholder.typicode.com/todos/5 net::ERR_INTERNET_DISCONNECTED
-            TypeError: Failed to fetch
-            at <anonymous>:1:1
-        */
+    Promise {<pending>}
+    GET https://jsonplaceholder.typicode.com/todos/5 net::ERR_INTERNET_DISCONNECTED
+    TypeError: Failed to fetch
+    at <anonymous>:1:1
+*/
 
 // Можна вивести тільки текст обєкта error
 fetch('https://jsonplaceholder.typicode.com/todos/5')
