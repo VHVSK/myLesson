@@ -16,7 +16,7 @@
 // Встановити глобально, відкрийте термінал (ТЕРМІНАЛ!!!)
 // * npm install -g typescript ts-node
 // Перевірка:
-// * tsc --help
+// * npx tsc --help
 
 // ! Встановлення з npmjs.com (рекомендується)
 // https://www.npmjs.com/package/ts-node#installation
