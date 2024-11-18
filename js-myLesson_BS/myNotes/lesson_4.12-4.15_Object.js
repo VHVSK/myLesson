@@ -20,7 +20,7 @@ console.log(myCity.city)
 myCity.city = 'Las Vegas'
 console.log(myCity.city)
 
-// ДОДАТИ властивості
+// ДОДАТИ властивость до об'єкту
 // незважаючи на тип данних const, можна змінювати об'єкт, сам тип змінної не змінюється, так як це посилення
 myCity.language = 'en'
 console.log(myCity.language)

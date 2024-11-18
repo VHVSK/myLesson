@@ -6,6 +6,9 @@ import Button from './components/Button'
 // В цьому проекті, передача стану іншому компоненту через властивість
 function App() {
   const [count, setCount] = useState(0)
+
+  // Ми передаємо іншому компоненту функцію incrementCount
+  // натискаючи там, змінюється стан тут.
   const incrementCount = () => {
     setCount(count + 1)
     // console.log(count) // на цьому єтапі ще старе значення
@@ -15,7 +18,7 @@ function App() {
   const texts = ['Click me', 'Click me please', 'Hit me', 'Press me']
 
   return (
-    <div className="App">
+    <div className='App'>
       <Counter count={count} />
       {/* <Button count={count} onClickFunction={setCount} /> було */}
       {/* Цей код ми переробили на перебор методом map/. Спочатку винесли всі Button в масив texts, далі визвали texts.map(), а в Button.js додали в аргументи text та в код {text}.

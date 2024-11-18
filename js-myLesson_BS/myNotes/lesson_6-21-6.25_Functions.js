@@ -237,3 +237,33 @@ function createGreeting() {
   return { greet, changeGreeting } // обєкт з методами
   // зверніть увагу, поветаємо змінні-функції без аргументів, аргументи будемо додавати при визові
 }
+
+// copilot
+// ! ======================
+// Використання об'єкта як аргумента функції:
+function createUser({ name, age, email }) {
+  console.log(`Ім'я: ${name}, Вік: ${age}, Email: ${email}`)
+}
+
+// Виклик функції з об'єктом
+createUser({
+  name: 'Іван',
+  age: 25,
+  email: 'ivan@example.com',
+})
+
+// ! ======================
+// Деструктуризація параметрів з дефолтними значеннями:
+function createUser({
+  name = 'Анонім',
+  age = 18,
+  email = 'unknown@example.com',
+} = {}) {
+  console.log(`Ім'я: ${name}, Вік: ${age}, Email: ${email}`)
+}
+
+// Виклик функції без аргументів, використовуються значення за замовчуванням
+createUser()
+
+// Виклик функції з частковими аргументами
+createUser({ name: 'Марія' })

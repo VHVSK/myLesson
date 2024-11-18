@@ -227,3 +227,60 @@ getData('https://jsonplaceholder.typicode.com/todos/3')
 
 // Існують також і інші бібліотеки які полегшують
 // Як варіант, можна джодати в свій можуть приклад вище - getData, та визивати його при необхідності
+
+// МІЙ ПРАКТИЧНИЙ ВИСНОВОКfetch - PUT or POST
+// Як працює fetch відправляючі дані методом PUT or POST, обробляє php...
+// Якща надсилати методом PUT - то потрібно надсилати об'єкт JSON.stringify({ ok: 1, status: 200 })
+/**
+ * fetch(URL_UPDATE_SETTINGS, {
+  method: 'PUT',
+  headers: {
+    Authorization: `Bearer ${user?.token}`,
+  },
+  body: JSON.stringify({ ok: 1, status: 200 }),
+})
+
+// PHP
+$data = json_decode(file_get_contents("php://input"));
+...
+$current .= 'print_r $data: ' . print_r($data, true) . "\n";
+...
+
+CONTENT_TYPE: text/plain;charset=UTF-8
+REQUEST_METHOD: PUT
+print_r $_PUT: 
+print_r $data: stdClass Object
+(
+    [ok] => 1
+    [status] => 200
+)
+ */
+
+// Якщо надсилати formData, то методои POST -
+/**
+ * const formData = new FormData();
+    formData.append('id', user.dataUser.id);
+    formData.append('name', 'fi2le');
+
+    fetch(URL_UPDATE_SETTINGS, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
+      body: formData,
+    })
+
+    PHP
+    $_POST['id']....
+ */
+
+/**
+     * $file = 'writefile2.txt';
+        $current = file_get_contents($file);
+        $current .= 'CONTENT_TYPE: ' . $_SERVER["CONTENT_TYPE"] . "\n";
+        $current .= 'REQUEST_METHOD: ' . $_SERVER["REQUEST_METHOD"] . "\n";
+        $current .= 'print_r $_PUT: ' . print_r($_PUT, true) . "\n";
+        $current .= 'print_r $data: ' . print_r($data, true) . "\n";
+        $current .= "\n";
+        file_put_contents($file, $current);
+     */

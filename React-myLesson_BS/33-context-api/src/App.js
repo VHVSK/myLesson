@@ -15,7 +15,7 @@ function App() {
     // <UserContext.Provider value={{ user, setUser }}>
     // 3) змінили назви
     <UserContext.Provider value={{ userName: user, changeUserName: setUser }}>
-      <div className="App">
+      <div className='App'>
         <User />
         <ChangeUser />
       </div>
@@ -25,7 +25,7 @@ function App() {
 
 export default App
 
-// Щоб використовувати UserContext, нам потрібно обентути Апп в UserContext.Provider та передати value={user}
+// Щоб використовувати UserContext, нам потрібно обентути App в UserContext.Provider та передати value={user}
 // А далі, всі дочірні компоненти будуть мати доступ до value
 // Далі у файлі UserInfo.jsx
 

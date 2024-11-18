@@ -8,7 +8,7 @@ function Posts() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
-  // Ми переписали цю функцію, щоб не було полки в консолі, бо useEffect() має повертати або функцію, або undefined
+  // Ми переписали цю функцію, щоб не було помилки в консолі, бо useEffect() має повертати або функцію, або undefined
   // useEffect(async () => {
   //   try {
   //     const res = await fetch(API_URL)
